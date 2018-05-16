@@ -69,7 +69,7 @@
                         const [ variable, ...value ] = item.split(':')
 
                         // special treatment for embedded svg image
-                        if (value[0] === ' url(\'data') value[0] = 'url(\data:'
+                        if (value[0] === ' url(\'data') value[0] = 'url(data:'
 
                         obj[variable] = value
                             .join('')

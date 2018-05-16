@@ -21,12 +21,16 @@
             :id="id"
             v-if="expanded"
         >
-            <div class="sub-category-control" v-for="(config, variable) in filteredVariables">
+            <div
+                class="sub-category-control"
+                v-for="(config, variable) in filteredVariables"
+                :key="variable"
+            >
                 <label :for="variable">
                     <span>{{ variable }}</span>
                     <icon-base
                         icon-name="info"
-                        icon-color="var(--hiq-gray-light)"
+                        icon-color="var(--hiq-gray-lighter)"
                         :width="12"
                         height="12"
                     >

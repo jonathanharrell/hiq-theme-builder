@@ -10,7 +10,7 @@
         <g :fill="iconColor">
             <slot />
         </g>
-  </svg>
+    </svg>
 </template>
 
 <script>

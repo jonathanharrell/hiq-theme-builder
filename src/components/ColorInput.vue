@@ -4,6 +4,10 @@
             <div class="controls" role="menu">
                 <variable-select type="color" @select="handleVariableSelect"></variable-select>
                 <h5>Value</h5>
+                <color-picker
+                    :value="resolvedColor"
+                    @input="updateColorValue"
+                ></color-picker>
             </div>
             <button
                 slot="reference"
@@ -19,13 +23,15 @@
 <script>
     import Popper from 'vue-popperjs'
     import VariableSelect from './VariableSelect'
+    import ColorPicker from './ColorPicker'
 
     export default {
         name: 'color-input',
 
         components: {
             Popper,
-            VariableSelect
+            VariableSelect,
+            ColorPicker
         },
 
         props: {
@@ -49,6 +55,10 @@
 
         methods: {
             handleVariableSelect (value) {
+                this.$emit('input', value)
+            },
+
+            updateColorValue (value) {
                 this.$emit('input', value)
             }
         }
@@ -81,7 +91,15 @@
     }
 
     .controls {
+        width: 100%;
         z-index: 10;
+        padding: 1rem;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
         background-color: white;
+    }
+
+    .vc-chrome {
+        width: 100%;
+        box-shadow: none;
     }
 </style>

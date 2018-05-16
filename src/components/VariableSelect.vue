@@ -2,7 +2,11 @@
     <div class="variable-select">
         <h5>Variable</h5>
         <select @change="handleChange">
-            <option :value="option" v-for="(config, option) in variableOptions">
+            <option
+                :value="option"
+                :key="option"
+                v-for="(config, option) in variableOptions"
+            >
                 {{ option }}
             </option>
         </select>
