@@ -1,8 +1,17 @@
 <template>
     <div class="color-picker">
-        <saturation-slider :value="value" @input="handleInput"></saturation-slider>
-        <hue-slider :value="value" @input="handleInput"></hue-slider>
-        <div class="text-inputs">
+        <h5>Value</h5>
+        <saturation-slider
+            :value="value"
+            :disabled="activeMode === 'name'"
+            @input="handleInput"
+        ></saturation-slider>
+        <hue-slider
+            :value="value"
+            :disabled="activeMode === 'name'"
+            @input="handleInput"
+        ></hue-slider>
+        <div class="color-mode-options">
             <button
                 v-for="mode in colorModes"
                 :key="mode"
@@ -11,6 +20,26 @@
                 {{ mode }}
             </button>
         </div>
+        <hsl-inputs
+            :value="value"
+            @input="handleInput"
+            v-if="activeMode === 'hsl'"
+        ></hsl-inputs>
+        <rgb-inputs
+            :value="value"
+            @input="handleInput"
+            v-if="activeMode === 'rgb'"
+        ></rgb-inputs>
+        <hex-input
+            :value="value"
+            @input="handleInput"
+            v-if="activeMode === 'hex'"
+        ></hex-input>
+        <name-input
+            :value="value"
+            @input="handleInput"
+            v-if="activeMode === 'name'"
+        ></name-input>
     </div>
 </template>
 
@@ -18,13 +47,21 @@
     import tinycolor from 'tinycolor2'
     import SaturationSlider from './SaturationSlider'
     import HueSlider from './HueSlider'
+    import HslInputs from './HslInputs'
+    import RgbInputs from './RgbInputs'
+    import HexInput from './HexInput'
+    import NameInput from './NameInput'
 
     export default {
         name: 'color-picker',
 
         components: {
             SaturationSlider,
-            HueSlider
+            HueSlider,
+            HslInputs,
+            RgbInputs,
+            HexInput,
+            NameInput
         },
 
         props: {
@@ -42,37 +79,27 @@
         },
 
         watch: {
-            'activeMode' (mode) {
-                const color = tinycolor(this.value)
-
-                switch (mode) {
-                    case 'hsl':
-                        this.$emit('input', color.toHslString())
-                        break
-
-                    case 'rgb':
-                        this.$emit('input', color.toRgbString())
-                        break
-
-                    case 'hex':
-                        this.$emit('input', color.toHexString())
-                        break
-
-                    case 'name':
-                        const name = color.toName()
-                        if (name) this.$emit('input', name)
-                        break
-
-                    default:
-                        break
-                }
+            'activeMode' () {
+                const colorValue = this.formatColorString(this.value)
+                if (colorValue) this.$emit('input', colorValue)
             }
         },
 
         methods: {
-            handleInput (value) {
+            formatColorString (value) {
                 const color = tinycolor(value)
-                this.$emit('input', color.toHslString())
+
+                switch (this.activeMode) {
+                    case 'hsl': return color.toHslString()
+                    case 'rgb': return color.toRgbString()
+                    case 'hex': return color.toHexString()
+                    case 'name': return color.toName()
+                }
+            },
+
+            handleInput (value) {
+                const colorValue = this.formatColorString(value)
+                if (colorValue) this.$emit('input', colorValue)
             }
         }
     }

@@ -1,10 +1,11 @@
 <template>
-    <div class="hue-slider">
-        <div class="hue-slider-container"
-             ref="container"
-             @mousedown="handleMouseDown"
-             @touchmove="handleChange"
-             @touchstart="handleChange"
+    <div class="hue-slider" :class="{'disabled': disabled}">
+        <div
+            class="hue-slider-container"
+            ref="container"
+            @mousedown="handleMouseDown"
+            @touchmove="handleChange"
+            @touchstart="handleChange"
         >
             <div class="hue-pointer" :style="{left: pointerLeft}">
                 <div class="hue-picker"></div>
@@ -23,6 +24,11 @@
             value: {
                 type: String,
                 required: true
+            },
+
+            disabled: {
+                type: Boolean,
+                default: false
             }
         },
 
@@ -112,6 +118,11 @@
         height: 1rem;
         border-radius: 2px;
         background: linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
+        &.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
     }
 
     .hue-slider-container {

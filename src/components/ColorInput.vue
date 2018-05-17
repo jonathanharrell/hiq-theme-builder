@@ -2,17 +2,10 @@
     <div class="color-input">
         <popper trigger="click" :options="{ placement: 'bottom-start' }">
             <div class="controls" role="menu">
+                <color-picker :value="resolvedColor" @input="updateColorValue"></color-picker>
                 <variable-select type="color" @select="handleVariableSelect"></variable-select>
-                <h5>Value</h5>
-                <color-picker
-                    :value="resolvedColor"
-                    @input="updateColorValue"
-                ></color-picker>
             </div>
-            <button
-                slot="reference"
-                class="current-value"
-            >
+            <button slot="reference" class="current-value">
                 <span class="color-swatch" :style="{ backgroundColor: resolvedColor }"></span>
                 <span class="color-string">{{ value }}</span>
             </button>
@@ -49,6 +42,7 @@
                         .slice(0, -1)
                     return this.$store.state.variables[variableName].value
                 }
+
                 return this.value
             }
         },

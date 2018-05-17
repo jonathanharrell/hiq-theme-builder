@@ -1,6 +1,7 @@
 <template>
     <div
         class="saturation-slider"
+        :class="{'disabled': disabled}"
         :style="{backgroundColor}"
         ref="container"
         @mousedown="handleMouseDown"
@@ -26,6 +27,11 @@
             value: {
                 type: String,
                 required: true
+            },
+
+            disabled: {
+                type: Boolean,
+                default: false
             }
         },
 
@@ -117,6 +123,11 @@
         width: 100%;
         padding: 25% 0;
         cursor: pointer;
+        &.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
     }
 
     .saturation-white,
