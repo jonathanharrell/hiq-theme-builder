@@ -1,6 +1,5 @@
 <template>
     <div class="color-picker">
-        <h5>Value</h5>
         <saturation-slider
             :value="value"
             :disabled="activeMode === 'name'"

@@ -1,16 +1,19 @@
 <template>
     <nav class="editor-nav">
         <h2 class="is-visually-hidden">Categories</h2>
-        <router-link
-            :to="{ params: { category: category.id, subcategory: category.subcategories[0].id } }"
-            v-for="category in categories"
-            :key="category.id"
-        >
-            <icon-base :iconName="category.label">
-                <component :is="getComponentName(category.id)"></component>
-            </icon-base>
-            <span class="is-visually-hidden">{{ category.label }}</span>
-        </router-link>
+        <div class="editor-categories" ref="categories">
+            <router-link
+                :to="{ params: { category: category.id, subcategory: category.subcategories[0].id } }"
+                v-for="(category, index) in categories"
+                :key="category.id"
+                @keydown.native="handleKeydown($event, index)"
+            >
+                <icon-base :iconName="category.label">
+                    <component :is="getComponentName(category.id)"></component>
+                </icon-base>
+                <span class="is-visually-hidden">{{ category.label }}</span>
+            </router-link>
+        </div>
     </nav>
 </template>
 
@@ -52,6 +55,20 @@
         methods: {
             getComponentName (iconId) {
                 return `icon-${iconId}`
+            },
+
+            handleKeydown (event, index) {
+                const categories = this.$refs.categories.children
+
+                if (event.code === 'ArrowDown') {
+                    if (index + 1 > categories.length - 1) categories[0].focus()
+                    else categories[index + 1].focus()
+                }
+
+                if (event.code === 'ArrowUp') {
+                    if (index - 1 < 0) categories[categories.length - 1].focus()
+                    else categories[index - 1].focus()
+                }
             }
         }
     }

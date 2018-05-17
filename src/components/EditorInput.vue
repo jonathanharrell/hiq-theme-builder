@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import ColorInput from './ColorInput'
+    import ColorInput from './color/ColorInput'
     import TextInput from './TextInput'
 
     export default {

@@ -15,7 +15,7 @@
 
 <script>
     import Popper from 'vue-popperjs'
-    import VariableSelect from './VariableSelect'
+    import VariableSelect from '../VariableSelect'
     import ColorPicker from './ColorPicker'
 
     export default {
