@@ -12,19 +12,27 @@
             :value="value"
             @input="handleInput"
         ></text-input>
+        <number-input
+            v-if="type === 'number'"
+            :name="name"
+            :value="value"
+            @input="handleInput"
+        ></number-input>
     </div>
 </template>
 
 <script>
     import ColorInput from './color/ColorInput'
     import TextInput from './TextInput'
+    import NumberInput from './NumberInput'
 
     export default {
         name: 'editor-input',
 
         components: {
             ColorInput,
-            TextInput
+            TextInput,
+            NumberInput
         },
 
         props: {

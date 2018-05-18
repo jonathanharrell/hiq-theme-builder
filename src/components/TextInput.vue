@@ -1,16 +1,25 @@
 <template>
-    <div class="text-input">
-        <popper trigger="click" :options="{ placement: 'bottom-start' }">
+    <div class="text-input" @keydown="handleKeydown">
+        <popper
+            trigger="click"
+            :options="{ placement: 'bottom-start' }"
+            ref="popper"
+        >
             <div class="controls" role="menu">
-                <variable-select type="text" :name="name" @select="handleVariableSelect"></variable-select>
-                <h5>Value</h5>
+                <variable-select
+                    type="text"
+                    :name="name"
+                    @select="handleVariableSelect"
+                ></variable-select>
             </div>
-            <button
+            <input
                 slot="reference"
-                class="current-value"
-            >
-                {{ value }}
-            </button>
+                type="text"
+                :value="value"
+                ref="input"
+                @input="handleInput"
+                @keydown="handleInputKeydown"
+            />
         </popper>
     </div>
 </template>
@@ -41,15 +50,41 @@
 
         methods: {
             handleVariableSelect (value) {
+                if (this.$refs.popper) this.$refs.popper.doClose()
                 this.$emit('input', value)
+            },
+
+            handleKeydown (event) {
+                if (event.key === 'Escape') {
+                    if (this.$refs.popper) this.$refs.popper.doClose()
+                    this.$refs.input.focus()
+                }
+            },
+
+            handleInput () {
+                if (this.$refs.popper) this.$refs.popper.doShow()
+            },
+
+            handleInputKeydown (event) {
+                if (event.key === 'Enter') {
+                    if (this.$refs.popper) this.$refs.popper.doClose()
+                }
             }
         }
     }
 </script>
 
 <style scoped>
-    button {
+    .text-input {
+        position: relative;
+    }
+
+    .controls {
+        z-index: 10;
         width: 100%;
-        justify-content: flex-start;
+        margin-top: 0.125rem;
+        padding: 1rem;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+        background-color: white;
     }
 </style>

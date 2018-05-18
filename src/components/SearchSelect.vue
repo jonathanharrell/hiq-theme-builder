@@ -142,6 +142,10 @@
             display: flex;
             align-items: center;
             padding: 0.125rem 0.5rem;
+            cursor: pointer;
+            &:hover,
+            &:focus,
+            &:active,
             &.highlighted {
                 background-color: var(--hiq-selection-color);
             }
