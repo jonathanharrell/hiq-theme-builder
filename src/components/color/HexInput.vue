@@ -1,7 +1,6 @@
 <template>
     <div class="hex-input">
         <div>
-            <label for="hex">Hex</label>
             <input
                 type="text"
                 id="hex"
@@ -9,6 +8,7 @@
                 :value="colorString"
                 @input="updateColor"
             >
+            <label for="hex">HEX</label>
         </div>
     </div>
 </template>
@@ -46,3 +46,12 @@
         }
     }
 </script>
+
+<style scoped>
+    label {
+        font-size: var(--hiq-font-size-small);
+        font-weight: var(--hiq-font-weight-normal);
+        text-align: center;
+        color: var(--hiq-gray);
+    }
+</style>

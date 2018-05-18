@@ -1,7 +1,6 @@
 <template>
     <div class="hsl-inputs">
         <div>
-            <label for="h">H</label>
             <input
                 type="number"
                 id="h"
@@ -9,9 +8,9 @@
                 :value="Math.round(colorObject.h)"
                 @input="updateColor"
             >
+            <label for="h">H</label>
         </div>
         <div>
-            <label for="s">S</label>
             <input
                 type="text"
                 id="s"
@@ -19,9 +18,9 @@
                 :value="[`${Math.round(colorObject.s * 100)}%`]"
                 @input="updateColor"
             >
+            <label for="s">S</label>
         </div>
         <div>
-            <label for="l">L</label>
             <input
                 type="text"
                 id="l"
@@ -29,6 +28,7 @@
                 :value="[`${Math.round(colorObject.l * 100)}%`]"
                 @input="updateColor"
             >
+            <label for="l">L</label>
         </div>
     </div>
 </template>
@@ -76,8 +76,17 @@
 <style scoped>
     .hsl-inputs {
         display: flex;
+        margin: 0 -0.25rem;
         & > * {
             flex: 1;
+            padding: 0 0.25rem;
         }
+    }
+
+    label {
+        font-size: var(--hiq-font-size-small);
+        font-weight: var(--hiq-font-weight-normal);
+        text-align: center;
+        color: var(--hiq-gray);
     }
 </style>

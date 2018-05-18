@@ -1,7 +1,6 @@
 <template>
     <div class="rgb-inputs">
         <div>
-            <label for="r">R</label>
             <input
                 type="number"
                 id="r"
@@ -9,9 +8,9 @@
                 :value="colorObject.r"
                 @input="updateColor"
             >
+            <label for="r">R</label>
         </div>
         <div>
-            <label for="g">G</label>
             <input
                 type="number"
                 id="g"
@@ -19,9 +18,9 @@
                 :value="colorObject.g"
                 @input="updateColor"
             >
+            <label for="g">G</label>
         </div>
         <div>
-            <label for="b">B</label>
             <input
                 type="number"
                 id="b"
@@ -29,6 +28,7 @@
                 :value="colorObject.b"
                 @input="updateColor"
             >
+            <label for="b">B</label>
         </div>
     </div>
 </template>
@@ -71,8 +71,17 @@
 <style scoped>
     .rgb-inputs {
         display: flex;
+        margin: 0 -0.25rem;
         & > * {
             flex: 1;
+            padding: 0 0.25rem;
         }
+    }
+
+    label {
+        font-size: var(--hiq-font-size-small);
+        font-weight: var(--hiq-font-weight-normal);
+        text-align: center;
+        color: var(--hiq-gray);
     }
 </style>

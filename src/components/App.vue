@@ -110,6 +110,9 @@
         --hiq-color-warning: hsl(46, 97%, 64%);
         --hiq-color-danger: hsl(352, 95%, 61%);
 
+        /* applied colors */
+        --hiq-selection-color: hsl(210, 100%, 90%);
+
         --hiq-container-horizontal-gap: 1rem;
 
         /* unitless base font size variables in px */

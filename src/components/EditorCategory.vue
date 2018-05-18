@@ -59,7 +59,7 @@
 
 <style scoped>
     .editor-category {
-        flex: 0 0 16rem;
+        flex: 0 0 18rem;
         overflow-y: auto;
         border-right: 1px solid var(--hiq-gray-lighter);
         background-color: hsl(0, 0%, 98%);

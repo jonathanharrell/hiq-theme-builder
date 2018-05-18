@@ -2,7 +2,7 @@
     <div class="text-input">
         <popper trigger="click" :options="{ placement: 'bottom-start' }">
             <div class="controls" role="menu">
-                <variable-select type="text" @select="handleVariableSelect"></variable-select>
+                <variable-select type="text" :name="name" @select="handleVariableSelect"></variable-select>
                 <h5>Value</h5>
             </div>
             <button
@@ -28,6 +28,11 @@
         },
 
         props: {
+            name: {
+                type: String,
+                required: true
+            },
+
             value: {
                 type: String,
                 required: true

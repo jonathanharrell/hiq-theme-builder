@@ -2,11 +2,13 @@
     <div class="editor-input">
         <color-input
             v-if="type === 'color'"
+            :name="name"
             :value="value"
             @input="handleInput"
         ></color-input>
         <text-input
             v-if="type === 'text'"
+            :name="name"
             :value="value"
             @input="handleInput"
         ></text-input>

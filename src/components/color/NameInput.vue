@@ -1,6 +1,5 @@
 <template>
     <div class="name-input">
-        <label for="name">Name</label>
         <input
             type="text"
             id="name"
@@ -8,6 +7,7 @@
             :value="colorString"
             @input="updateColor"
         >
+        <label for="name">Name</label>
     </div>
 </template>
 
@@ -40,3 +40,12 @@
         }
     }
 </script>
+
+<style scoped>
+    label {
+        font-size: var(--hiq-font-size-small);
+        font-weight: var(--hiq-font-weight-normal);
+        text-align: center;
+        color: var(--hiq-gray);
+    }
+</style>
