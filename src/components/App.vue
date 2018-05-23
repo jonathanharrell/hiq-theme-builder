@@ -119,6 +119,17 @@
         --hiq-unitless-min-font-size: 14;
         --hiq-unitless-max-font-size: 15;
 
+        /* font sizes */
+        --hiq-font-size-1: 2.5rem;
+        --hiq-font-size-2: 2rem;
+        --hiq-font-size-3: 1.75rem;
+        --hiq-font-size-4: 1.5rem;
+        --hiq-font-size-5: 1rem;
+        --hiq-font-size-6: 0.875rem;
+        --hiq-font-size-base: var(--hiq-font-size-5);
+        --hiq-font-size-large: var(--hiq-font-size-4);
+        --hiq-font-size-small: var(--hiq-font-size-6);
+
         --hiq-border-radius: 4px;
     }
 </style>

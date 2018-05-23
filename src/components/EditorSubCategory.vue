@@ -40,7 +40,7 @@
                 <editor-input
                     :type="config.type"
                     :name="variable"
-                    v-model="config.value"
+                    :value="config.value"
                     @input="updateVariable"
                 ></editor-input>
             </div>

@@ -8,7 +8,7 @@
         >
             <template slot-scope="{ option }">
                 <span class="color-swatch" :style="{ backgroundColor: option[1].value }" v-if="option[1].type === 'color'"></span>
-                <span class="variable-name">{{ option[0] }}</span>
+                <span class="variable-name" :title="option[1].value">{{ option[0] }}</span>
             </template>
         </search-select>
     </div>
