@@ -1,6 +1,11 @@
 <template>
     <div class="editor-settings">
+        Theme:
+        <button @click="setTheme('light')">Light</button>
+        <button @click="setTheme('dark')">Dark</button>
         <button @click="exportVariables">Export</button>
+        <button>Reset</button>
+        <button>Preview</button>
     </div>
 </template>
 
@@ -15,6 +20,10 @@
         },
 
         methods: {
+            setTheme (theme) {
+                this.$store.commit('setTheme', theme)
+            },
+
             exportVariables () {
                 const variablesByCategory = Object.entries(this.variables)
                     .reduce((obj, item) => {
@@ -59,7 +68,7 @@
 <style scoped>
     .editor-settings {
         flex: 0 0 12rem;
-        border-left: 1px solid var(--hiq-gray-lighter);
-        background-color: hsl(0, 0%, 98%);
+        border-left: 1px solid var(--editor-panel-border-color);
+        background-color: var(--editor-panel-background-color);
     }
 </style>

@@ -27,15 +27,22 @@
                 :key="variable"
             >
                 <label :for="variable">
-                    <span>{{ variable }}</span>
-                    <icon-base
-                        icon-name="info"
-                        icon-color="var(--hiq-gray-lighter)"
-                        :width="12"
-                        height="12"
-                    >
-                        <icon-info></icon-info>
-                    </icon-base>
+                    <span class="variable-name">{{ variable }}</span>
+                    <popper trigger="hover" :options="{ placement: 'bottom' }">
+                        <span class="controls tooltip">
+                            {{ config.description }}
+                        </span>
+                        <span slot="reference" class="get-info">
+                            <icon-base
+                                icon-name="info"
+                                icon-color="var(--info-icon-color)"
+                                :width="12"
+                                height="12"
+                            >
+                                <icon-info></icon-info>
+                            </icon-base>
+                        </span>
+                    </popper>
                 </label>
                 <editor-input
                     :type="config.type"
@@ -49,6 +56,7 @@
 </template>
 
 <script>
+    import Popper from 'vue-popperjs'
     import IconBase from './icons/IconBase'
     import IconCaret from './icons/IconCaret'
     import IconInfo from './icons/IconInfo'
@@ -58,6 +66,7 @@
         name: 'editor-sub-category',
 
         components: {
+            Popper,
             IconBase,
             IconCaret,
             IconInfo,
@@ -122,7 +131,7 @@
             padding-bottom: 0.75rem;
             border-radius: 0;
             border-color: transparent;
-            border-top-color: var(--hiq-gray-lighter);
+            border-top-color: var(--editor-panel-border-color);
             background-color: transparent;
             color: var(--hiq-text-color);
             &[aria-expanded=true] {
@@ -138,13 +147,16 @@
 
     .sub-category-controls {
         padding: 1rem;
+    }
+
+    .sub-category-control {
         & label {
             display: flex;
             align-items: center;
             justify-content: space-between;
             font-weight: var(--hiq-font-weight-medium);
-            color: var(--hiq-gray);
-            & span {
+            color: var(--label-color);
+            & .variable-name {
                 flex: 1;
                 overflow: hidden;
                 padding-right: 0.5rem;
@@ -152,9 +164,14 @@
                 text-overflow: ellipsis;
             }
         }
+        &:not(:last-child) {
+            margin-bottom: 0.75rem;
+        }
     }
 
-    .sub-category-control:not(:last-child) {
-        margin-bottom: 0.75rem;
+    .tooltip {
+        max-width: 12rem;
+        margin-top: 0.5rem;
+        text-align: center;
     }
 </style>

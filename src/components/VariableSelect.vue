@@ -63,7 +63,7 @@
         width: 1.25rem;
         height: 1.25rem;
         margin-right: 0.5rem;
-        border: 1px solid var(--hiq-gray-lighter);
+        border: 1px solid var(--hiq-input-border-color);
         border-radius: var(--hiq-border-radius);
     }
 

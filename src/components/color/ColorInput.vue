@@ -92,8 +92,8 @@
         height: 2.5rem;
         justify-content: flex-start;
         padding: 0 0.5rem;
-        border-color: var(--hiq-gray-lighter);
-        background-color: white;
+        border-color: var(--hiq-input-border-color);
+        background-color: var(--hiq-input-background-color);
         font-weight: var(--hiq-font-weight-normal);
         color: var(--hiq-text-color);
     }
@@ -103,7 +103,7 @@
         width: 1.25rem;
         height: 1.25rem;
         margin-right: 0.5rem;
-        border: 1px solid var(--hiq-gray-lighter);
+        border: 1px solid var(--hiq-input-border-color);
         border-radius: var(--hiq-border-radius);
     }
 
@@ -121,7 +121,7 @@
         margin-top: 0.125rem;
         padding: 1rem;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-        background-color: white;
+        background-color: var(--controls-background-color);
     }
 
     .variable-select {

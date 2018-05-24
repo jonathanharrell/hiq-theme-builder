@@ -44,7 +44,7 @@
     .editor-category {
         flex: 0 0 18rem;
         overflow-y: auto;
-        border-right: 1px solid var(--hiq-gray-lighter);
-        background-color: hsl(0, 0%, 98%);
+        border-right: 1px solid var(--editor-panel-border-color);
+        background-color: var(--editor-panel-background-color);
     }
 </style>

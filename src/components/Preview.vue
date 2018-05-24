@@ -19,6 +19,6 @@
 <style scoped>
     .preview {
         flex: 1;
-        background-color: var(--hiq-gray-lightest);
+        background-color: var(--editor-preview-background-color);
     }
 </style>

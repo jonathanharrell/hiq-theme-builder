@@ -119,12 +119,12 @@
         & button {
             margin-bottom: 0.5rem;
             padding: 0 0.5rem;
-            border-color: var(--hiq-gray-lighter);
+            border-color: var(--hiq-input-border-color);
             border-radius: 0;
             background-color: transparent;
             font-size: var(--hiq-font-size-small);
             font-weight: var(--hiq-font-weight-normal);
-            color: var(--hiq-gray);
+            color: var(--label-color);
             &.active {
                 border-color: var(--hiq-color-primary);
                 color: var(--hiq-color-primary);

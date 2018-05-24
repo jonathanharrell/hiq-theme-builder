@@ -2,22 +2,33 @@
     <nav class="editor-nav">
         <h2 class="is-visually-hidden">Categories</h2>
         <div class="editor-categories" ref="categories">
-            <router-link
-                :to="{ params: { category: category.id, subcategory: category.subcategories[0].id } }"
+            <popper
                 v-for="(category, index) in categories"
                 :key="category.id"
-                @keydown.native="handleKeydown($event, index)"
+                trigger="hover"
+                :options="{ placement: 'right' }"
+                :delay-on-mouse-out="0"
             >
-                <icon-base :iconName="category.label">
-                    <component :is="getComponentName(category.id)"></component>
-                </icon-base>
-                <span class="is-visually-hidden">{{ category.label }}</span>
-            </router-link>
+                <span class="controls tooltip">
+                    {{ category.label }}
+                </span>
+                <router-link
+                    :to="{ params: { category: category.id, subcategory: category.subcategories[0].id } }"
+                    slot="reference"
+                    @keydown.native="handleKeydown($event, index)"
+                >
+                    <icon-base :iconName="category.label">
+                        <component :is="getComponentName(category.id)"></component>
+                    </icon-base>
+                    <span class="is-visually-hidden">{{ category.label }}</span>
+                </router-link>
+            </popper>
         </div>
     </nav>
 </template>
 
 <script>
+    import Popper from 'vue-popperjs'
     import categories from '../categories'
     import IconBase from './icons/IconBase'
     import IconButtons from './icons/IconButtons'
@@ -34,6 +45,7 @@
         name: 'editor-nav',
 
         components: {
+            Popper,
             IconBase,
             IconButtons,
             IconCode,
@@ -80,7 +92,8 @@
         flex-direction: column;
         width: 4rem;
         padding: 1rem 0;
-        border-right: 1px solid var(--hiq-gray-lighter);
+        border-right: 1px solid var(--editor-nav-border-color);
+        background-color: var(--editor-nav-background-color);
     }
 
     .editor-nav a {
@@ -100,5 +113,9 @@
             width: 1.25rem;
             height: 1.25rem;
         }
+    }
+
+    .tooltip {
+        margin-left: -0.5rem;
     }
 </style>

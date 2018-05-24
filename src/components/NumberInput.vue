@@ -92,7 +92,6 @@
                 let value = this.value
 
                 while (value.startsWith('var')) {
-                    console.log(value)
                     const variableName = value
                         .replace('var(', '')
                         .slice(0, -1)
@@ -153,7 +152,11 @@
             },
 
             updateUnit (unit) {
-                this.$emit('input', `${this.unitlessValue}${unit || ''}`)
+                if (this.isVariable) {
+                    this.$emit('input', `0${unit || ''}`)
+                } else {
+                    this.$emit('input', `${this.unitlessValue}${unit || ''}`)
+                }
             }
         }
     }
@@ -170,7 +173,7 @@
         margin-top: 0.125rem;
         padding: 1rem;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-        background-color: white;
+        background-color: var(--controls-background-color);
     }
 
     .unit-options {
@@ -181,12 +184,12 @@
         & button {
             margin-bottom: 0.5rem;
             padding: 0 0.5rem;
-            border-color: var(--hiq-gray-lighter);
+            border-color: var(--hiq-input-border-color);
             border-radius: 0;
             background-color: transparent;
             font-size: var(--hiq-font-size-small);
             font-weight: var(--hiq-font-weight-normal);
-            color: var(--hiq-gray);
+            color: var(--label-color);
             &.active {
                 border-color: var(--hiq-color-primary);
                 color: var(--hiq-color-primary);
@@ -197,10 +200,11 @@
     .input-wrapper {
         display: flex;
         align-items: center;
-        border: 1px solid var(--hiq-gray-lighter);
+        border: 1px solid var(--hiq-input-border-color);
         border-radius: var(--hiq-border-radius);
-        background-color: white;
+        background-color: var(--hiq-input-background-color);
         &:focus-within {
+            border-color: var(--hiq-input-focus-border-color);
             box-shadow: 0 0 0 var(--hiq-outline-width, 0.2rem) var(--hiq-outline-color, hsl(210, 100%, 85%));
         }
     }
@@ -224,7 +228,7 @@
     .active-unit {
         padding: 0.125rem 0.5rem;
         border-radius: var(--hiq-border-radius);
-        background-color: var(--hiq-gray-lightest);
+        background-color: var(--pill-background-color);
         font-size: var(--hiq-font-size-small);
         color: var(--hiq-gray-light);
     }

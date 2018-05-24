@@ -137,11 +137,12 @@
         overflow-y: auto;
         padding: 0.25rem 0;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-        background-color: white;
+        background-color: var(--controls-background-color);
         & li {
             display: flex;
             align-items: center;
             padding: 0.125rem 0.5rem;
+            color: var(--hiq-text-color);
             cursor: pointer;
             &:hover,
             &:focus,

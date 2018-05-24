@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app" :class="['theme-' + theme]">
         <editor></editor>
     </div>
 </template>
@@ -13,6 +13,12 @@
 
         components: {
             Editor
+        },
+
+        computed: {
+            theme () {
+                return this.$store.state.theme
+            }
         },
 
         created () {
@@ -131,5 +137,49 @@
         --hiq-font-size-small: var(--hiq-font-size-6);
 
         --hiq-border-radius: 4px;
+
+        --hiq-input-border-color: var(--hiq-gray-lighter);
+        --hiq-input-background-color: white;
+
+        --navbar-background-color: white;
+        --editor-nav-background-color: white;
+        --editor-nav-border-color: var(--hiq-gray-lighter);
+        --tooltip-background-color: var(--hiq-gray-dark);
+        --editor-panel-background-color: hsl(220, 10%, 98%);
+        --editor-panel-border-color: var(--hiq-gray-lighter);
+        --label-color: var(--hiq-gray);
+        --info-icon-color: var(--hiq-gray-lighter);
+        --controls-background-color: white;
+        --pill-background-color: var(--hiq-gray-lightest);
+        --editor-preview-background-color: var(--hiq-gray-lightest);
+    }
+
+    .theme-dark {
+        --hiq-text-color: var(--hiq-gray-lighter);
+        --hiq-selection-color: var(--hiq-gray-darker);
+        --hiq-input-border-color: var(--hiq-gray-darker);
+        --hiq-input-background-color: var(--hiq-gray-dark);
+        --hiq-input-placeholder-color: var(--hiq-gray-light);
+
+        --navbar-background-color: var(--hiq-gray-dark);
+        --editor-nav-background-color: var(--hiq-gray-dark);
+        --editor-nav-border-color: var(--hiq-gray-darker);
+        --tooltip-background-color: var(--hiq-gray-darkest);
+        --editor-panel-background-color: hsl(220, 10%, 15%);
+        --editor-panel-border-color: var(--hiq-gray-darker);
+        --label-color: var(--hiq-gray-light);
+        --info-icon-color: var(--hiq-gray);
+        --controls-background-color: var(--hiq-gray-dark);
+        --pill-background-color: var(--hiq-gray-darker);
+        --editor-preview-background-color: var(--hiq-gray-darker);
+    }
+
+    .tooltip {
+        z-index: 1000;
+        padding: 0.25rem 0.5rem;
+        border-radius: var(--hiq-border-radius);
+        background-color: var(--tooltip-background-color);
+        font-size: var(--hiq-font-size-small);
+        color: var(--hiq-gray-lighter);
     }
 </style>

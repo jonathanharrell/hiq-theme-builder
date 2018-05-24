@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
-        variables: {}
+        variables: {},
+        theme: 'light'
     },
 
     mutations: {
@@ -21,6 +22,10 @@ const store = new Vuex.Store({
                     value
                 }
             }
+        },
+
+        setTheme (state, theme) {
+            state.theme = theme
         }
     }
 })

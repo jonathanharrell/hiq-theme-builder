@@ -42,7 +42,7 @@
         align-items: center;
         position: relative;
         height: 4rem;
-        background-color: white;
+        background-color: var(--navbar-background-color);
         box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
     }
 
