@@ -11,7 +11,7 @@
                 <variable-select type="color" :name="name" @select="handleVariableSelect"></variable-select>
             </div>
             <button slot="reference" class="current-value" ref="button">
-                <span class="color-swatch" :style="{ backgroundColor: resolvedColor }"></span>
+                <color-swatch :color="resolvedColor"></color-swatch>
                 <span class="color-string">{{ value }}</span>
             </button>
         </popper>
@@ -22,6 +22,7 @@
     import Popper from 'vue-popperjs'
     import VariableSelect from '../VariableSelect'
     import ColorPicker from './ColorPicker'
+    import ColorSwatch from '../base/ColorSwatch'
 
     export default {
         name: 'color-input',
@@ -29,7 +30,8 @@
         components: {
             Popper,
             VariableSelect,
-            ColorPicker
+            ColorPicker,
+            ColorSwatch
         },
 
         props: {
@@ -96,15 +98,6 @@
         background-color: var(--hiq-input-background-color);
         font-weight: var(--hiq-font-weight-normal);
         color: var(--hiq-text-color);
-    }
-
-    .color-swatch {
-        display: inline-block;
-        width: 1.25rem;
-        height: 1.25rem;
-        margin-right: 0.5rem;
-        border: 1px solid var(--hiq-input-border-color);
-        border-radius: var(--hiq-border-radius);
     }
 
     .color-string {

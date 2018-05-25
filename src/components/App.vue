@@ -1,6 +1,7 @@
 <template>
-    <div id="app" :class="['theme-' + theme]">
-        <editor></editor>
+    <div id="app" class="app-wrapper" :class="['theme-' + editorTheme]">
+        <div v-if="loading">Loading...</div>
+        <editor v-else></editor>
     </div>
 </template>
 
@@ -15,9 +16,15 @@
             Editor
         },
 
+        data () {
+            return {
+                loading: false
+            }
+        },
+
         computed: {
-            theme () {
-                return this.$store.state.theme
+            editorTheme () {
+                return this.$store.state.editorTheme
             }
         },
 
@@ -27,6 +34,8 @@
 
         methods: {
             async getVariableConfig () {
+                this.loading = true
+
                 const { data } = await axios.get('https://raw.githubusercontent.com/jonathanharrell/hiq/master/_data/custom-properties.yml')
                 const variableConfig = this.extractConfig(data)
                 const defaultValues = await this.getDefaultValueData()
@@ -37,6 +46,7 @@
                 })
 
                 this.storeVariables(variableConfig)
+                this.loading = false
             },
 
             extractConfig (data) {
@@ -91,6 +101,7 @@
                     data[variable].value = config.default
                 })
 
+                this.$store.commit('setDefaultVariables', data)
                 this.$store.commit('setVariables', data)
             }
         }
@@ -138,9 +149,14 @@
 
         --hiq-border-radius: 4px;
 
+        --hiq-text-color: var(--hiq-gray-darker);
         --hiq-input-border-color: var(--hiq-gray-lighter);
         --hiq-input-background-color: white;
 
+        --secondary-button-background-color: var(--hiq-gray-lighter);
+        --secondary-button-border-color: var(--hiq-gray-lighter);
+        --secondary-button-text-color: var(--hiq-gray);
+        --secondary-button-hover-text-color: var(--hiq-gray-dark);
         --navbar-background-color: white;
         --editor-nav-background-color: white;
         --editor-nav-border-color: var(--hiq-gray-lighter);
@@ -161,6 +177,10 @@
         --hiq-input-background-color: var(--hiq-gray-dark);
         --hiq-input-placeholder-color: var(--hiq-gray-light);
 
+        --secondary-button-background-color: var(--hiq-gray-dark);
+        --secondary-button-border-color: var(--hiq-gray-darker);
+        --secondary-button-text-color: var(--hiq-gray-light);
+        --secondary-button-hover-text-color: var(--hiq-gray-lighter);
         --navbar-background-color: var(--hiq-gray-dark);
         --editor-nav-background-color: var(--hiq-gray-dark);
         --editor-nav-border-color: var(--hiq-gray-darker);
@@ -172,6 +192,23 @@
         --controls-background-color: var(--hiq-gray-dark);
         --pill-background-color: var(--hiq-gray-darker);
         --editor-preview-background-color: var(--hiq-gray-darker);
+    }
+
+    .app-wrapper {
+        min-width: 60rem;
+    }
+
+    .is-secondary {
+        border-color: var(--secondary-button-border-color);
+        background-color: var(--secondary-button-background-color);
+        color: var(--secondary-button-text-color);
+        &:hover,
+        &:focus,
+        &:active {
+            border-color: var(--secondary-button-border-color);
+            background-color: var(--secondary-button-background-color);
+            color: var(--secondary-button-hover-text-color);
+        }
     }
 
     .tooltip {

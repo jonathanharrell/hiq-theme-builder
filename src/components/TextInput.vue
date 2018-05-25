@@ -61,8 +61,9 @@
                 }
             },
 
-            handleInput () {
+            handleInput (event) {
                 if (this.$refs.popper) this.$refs.popper.doShow()
+                this.$emit('input', event.target.value)
             },
 
             handleInputKeydown (event) {
@@ -85,6 +86,10 @@
         margin-top: 0.125rem;
         padding: 1rem;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-        background-color: white;
+        background-color: var(--controls-background-color);
+    }
+
+    input {
+        padding-right: 0;
     }
 </style>

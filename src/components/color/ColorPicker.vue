@@ -10,7 +10,7 @@
             :disabled="activeMode === 'name'"
             @input="handleInput"
         ></hue-slider>
-        <div class="color-mode-options">
+        <button-group class="color-mode-options">
             <button
                 v-for="mode in colorModes"
                 :key="mode"
@@ -19,7 +19,7 @@
             >
                 {{ mode }}
             </button>
-        </div>
+        </button-group>
         <hsl-inputs
             :value="value"
             @input="handleInput"
@@ -47,6 +47,7 @@
     import tinycolor from 'tinycolor2'
     import SaturationSlider from './SaturationSlider'
     import HueSlider from './HueSlider'
+    import ButtonGroup from '../base/ButtonGroup'
     import HslInputs from './HslInputs'
     import RgbInputs from './RgbInputs'
     import HexInput from './HexInput'
@@ -58,6 +59,7 @@
         components: {
             SaturationSlider,
             HueSlider,
+            ButtonGroup,
             HslInputs,
             RgbInputs,
             HexInput,
@@ -111,24 +113,6 @@
     }
 
     .color-mode-options {
-        display: flex;
-        margin-top: 0.5rem;
-        & * {
-            flex: 1;
-        }
-        & button {
-            margin-bottom: 0.5rem;
-            padding: 0 0.5rem;
-            border-color: var(--hiq-input-border-color);
-            border-radius: 0;
-            background-color: transparent;
-            font-size: var(--hiq-font-size-small);
-            font-weight: var(--hiq-font-weight-normal);
-            color: var(--label-color);
-            &.active {
-                border-color: var(--hiq-color-primary);
-                color: var(--hiq-color-primary);
-            }
-        }
+        margin: 0.5rem 0;
     }
 </style>

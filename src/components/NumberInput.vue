@@ -6,7 +6,7 @@
             ref="popper"
         >
             <div class="controls" role="menu">
-                <div class="unit-options">
+                <button-group class="unit-options">
                     <button
                         v-for="unit in units"
                         :key="unit"
@@ -18,7 +18,7 @@
                     <button :class="{ active: activeUnit === null}" @click="updateUnit(null)">
                         none
                     </button>
-                </div>
+                </button-group>
                 <variable-select
                     type="number"
                     :name="name"
@@ -55,6 +55,7 @@
 
 <script>
     import Popper from 'vue-popperjs'
+    import ButtonGroup from './base/ButtonGroup'
     import VariableSelect from './VariableSelect'
 
     export default {
@@ -62,6 +63,7 @@
 
         components: {
             Popper,
+            ButtonGroup,
             VariableSelect
         },
 
@@ -84,6 +86,10 @@
         },
 
         computed: {
+            defaultMeasurementUnit () {
+                return this.$store.state.editorDefaults.measurementUnit
+            },
+
             isVariable () {
                 return this.value.startsWith('var(')
             },
@@ -177,24 +183,7 @@
     }
 
     .unit-options {
-        display: flex;
-        & * {
-            flex: 1;
-        }
-        & button {
-            margin-bottom: 0.5rem;
-            padding: 0 0.5rem;
-            border-color: var(--hiq-input-border-color);
-            border-radius: 0;
-            background-color: transparent;
-            font-size: var(--hiq-font-size-small);
-            font-weight: var(--hiq-font-weight-normal);
-            color: var(--label-color);
-            &.active {
-                border-color: var(--hiq-color-primary);
-                color: var(--hiq-color-primary);
-            }
-        }
+        margin-bottom: 0.5rem;
     }
 
     .input-wrapper {
@@ -212,6 +201,7 @@
     input {
         flex: 1;
         padding-left: 0.5rem;
+        padding-right: 0;
         border-color: transparent;
         border-radius: 0;
         background-color: transparent;
@@ -235,10 +225,6 @@
 
     .resolved-value {
         margin-left: 0.5rem;
-    }
-
-    input {
-
     }
 
     .active-unit {

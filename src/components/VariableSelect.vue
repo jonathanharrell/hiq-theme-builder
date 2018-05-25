@@ -7,7 +7,7 @@
             @input="handleInput"
         >
             <template slot-scope="{ option }">
-                <span class="color-swatch" :style="{ backgroundColor: option[1].value }" v-if="option[1].type === 'color'"></span>
+                <color-swatch :color="option[1].value" v-if="option[1].type === 'color'"></color-swatch>
                 <span class="variable-name" :title="option[1].value">{{ option[0] }}</span>
             </template>
         </search-select>
@@ -15,13 +15,15 @@
 </template>
 
 <script>
-    import SearchSelect from './SearchSelect'
+    import SearchSelect from './base/SearchSelect'
+    import ColorSwatch from './base/ColorSwatch'
 
     export default {
         name: 'variable-select',
 
         components: {
-            SearchSelect
+            SearchSelect,
+            ColorSwatch
         },
 
         props: {
