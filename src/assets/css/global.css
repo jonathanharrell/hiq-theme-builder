@@ -1,0 +1,25 @@
+.app-wrapper {
+    min-width: 60rem;
+}
+
+.is-secondary {
+    border-color: var(--secondary-button-border-color);
+    background-color: var(--secondary-button-background-color);
+    color: var(--secondary-button-text-color);
+    &:hover,
+    &:focus,
+    &:active {
+         border-color: var(--secondary-button-border-color);
+         background-color: var(--secondary-button-background-color);
+         color: var(--secondary-button-hover-text-color);
+    }
+}
+
+.tooltip {
+    z-index: 1000;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--hiq-border-radius);
+    background-color: var(--tooltip-background-color);
+    font-size: var(--hiq-font-size-small);
+    color: var(--hiq-gray-lighter);
+}

@@ -32,7 +32,7 @@
     import categories from '../categories'
     import IconBase from './icons/IconBase'
     import IconButtons from './icons/IconButtons'
-    import IconCode from './icons/IconCode'
+    import IconCodeInput from './icons/IconCodeInput'
     import IconColors from './icons/IconColors'
     import IconFormsInputs from './icons/IconFormsInputs'
     import IconMediaElements from './icons/IconMediaElements'
@@ -48,7 +48,7 @@
             Popper,
             IconBase,
             IconButtons,
-            IconCode,
+            IconCodeInput,
             IconColors,
             IconFormsInputs,
             IconMediaElements,

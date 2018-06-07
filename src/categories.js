@@ -160,7 +160,7 @@ export default [
         ]
     },
     {
-        id: 'code',
+        id: 'code-input',
         label: 'Code',
         subcategories: [
             {

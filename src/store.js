@@ -3,11 +3,15 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+const storedEditorTheme = localStorage.getItem('hiqThemeBuilderEditorTheme')
+const storedThemeName = localStorage.getItem('hiqThemeBuilderThemeName')
+
 const store = new Vuex.Store({
     state: {
         defaultVariables: {},
         variables: {},
-        editorTheme: 'light'
+        editorTheme: storedEditorTheme || 'light',
+        themeName: storedThemeName || 'Untitled Theme'
     },
 
     mutations: {
@@ -17,6 +21,7 @@ const store = new Vuex.Store({
 
         setVariables (state, variables) {
             state.variables = variables
+            localStorage.setItem('hiqThemeBuilderVariables', JSON.stringify(variables))
         },
 
         updateVariable (state, { name, value }) {
@@ -27,10 +32,18 @@ const store = new Vuex.Store({
                     value
                 }
             }
+
+            localStorage.setItem('hiqThemeBuilderVariables', JSON.stringify(state.variables))
         },
 
         setEditorTheme (state, theme) {
             state.editorTheme = theme
+            localStorage.setItem('hiqThemeBuilderEditorTheme', theme)
+        },
+
+        setThemeName (state, name) {
+            state.themeName = name
+            localStorage.setItem('hiqThemeBuilderThemeName', name)
         }
     }
 })

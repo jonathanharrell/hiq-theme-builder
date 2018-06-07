@@ -2,7 +2,7 @@
     <div class="colors">
         <h1>Colors</h1>
         <h2>Gray Color Palette</h2>
-        <div class="color-thumbnails">
+        <section class="color-thumbnails">
             <div class="color-thumbnail">
                 <div class="color-swatch" style="background-color: var(--hiq-gray-darkest)"></div>
                 <p class="variable-label">Darkest Gray</p>
@@ -31,9 +31,9 @@
                 <div class="color-swatch" style="background-color: var(--hiq-gray-lightest)"></div>
                 <p class="variable-label">Lightest Gray</p>
             </div>
-        </div>
+        </section>
         <h2>Semantic Color Palette</h2>
-        <div class="color-thumbnails">
+        <section class="color-thumbnails">
             <div class="color-thumbnail">
                 <div class="color-swatch" style="background-color: var(--hiq-color-primary)"></div>
                 <p class="variable-label">Primary</p>
@@ -50,9 +50,9 @@
                 <div class="color-swatch" style="background-color: var(--hiq-color-danger)"></div>
                 <p class="variable-label">Danger</p>
             </div>
-        </div>
+        </section>
         <h2>Applied Colors</h2>
-        <div class="color-thumbnails">
+        <section class="color-thumbnails">
             <div class="color-thumbnail">
                 <div class="color-swatch" style="background-color: var(--hiq-html-background-color)"></div>
                 <p class="variable-label">HTML Background Color</p>
@@ -73,7 +73,7 @@
                 <div class="color-swatch" style="background-color: var(--hiq-disabled-text-color)"></div>
                 <p class="variable-label">Disabled Text Color</p>
             </div>
-        </div>
+        </section>
     </div>
 </template>
 

@@ -1,10 +1,6 @@
 <template>
     <div class="editor">
-        <header class="navbar">
-            <div class="container is-fluid">
-
-            </div>
-        </header>
+        <editor-header></editor-header>
         <main>
             <editor-nav></editor-nav>
             <editor-category></editor-category>
@@ -15,6 +11,7 @@
 </template>
 
 <script>
+    import EditorHeader from './EditorHeader'
     import EditorNav from './EditorNav'
     import EditorCategory from './EditorCategory'
     import EditorSettings from './EditorSettings'
@@ -23,6 +20,7 @@
         name: 'editor',
 
         components: {
+            EditorHeader,
             EditorNav,
             EditorCategory,
             EditorSettings
@@ -35,15 +33,6 @@
         display: flex;
         flex-direction: column;
         height: 100vh;
-    }
-
-    .navbar {
-        display: flex;
-        align-items: center;
-        position: relative;
-        height: 4rem;
-        background-color: var(--navbar-background-color);
-        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
     }
 
     main {

@@ -54,6 +54,7 @@
 </template>
 
 <script>
+    import { debounce } from 'lodash'
     import Popper from 'vue-popperjs'
     import ButtonGroup from './base/ButtonGroup'
     import VariableSelect from './VariableSelect'
@@ -146,10 +147,10 @@
                 }
             },
 
-            handleInput (event) {
+            handleInput: debounce(function (event) {
                 if (this.$refs.popper) this.$refs.popper.doShow()
                 this.$emit('input', `${event.target.value}${this.activeUnit || ''}`)
-            },
+            }, 300),
 
             handleInputKeydown (event) {
                 if (event.key === 'Enter') {

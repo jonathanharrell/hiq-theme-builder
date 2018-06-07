@@ -1,0 +1,23 @@
+.theme-dark {
+    --hiq-text-color: var(--hiq-gray-lighter);
+    --hiq-selection-color: var(--hiq-gray-darker);
+    --hiq-input-border-color: var(--hiq-gray-darker);
+    --hiq-input-background-color: var(--hiq-gray-dark);
+    --hiq-input-placeholder-color: var(--hiq-gray-light);
+
+    --secondary-button-background-color: var(--hiq-gray-dark);
+    --secondary-button-border-color: var(--hiq-gray-darker);
+    --secondary-button-text-color: var(--hiq-gray-light);
+    --secondary-button-hover-text-color: var(--hiq-gray-lighter);
+    --navbar-background-color: var(--hiq-gray-dark);
+    --editor-nav-background-color: var(--hiq-gray-dark);
+    --editor-nav-border-color: var(--hiq-gray-darker);
+    --tooltip-background-color: var(--hiq-gray-darkest);
+    --editor-panel-background-color: hsl(220, 10%, 15%);
+    --editor-panel-border-color: var(--hiq-gray-darker);
+    --label-color: var(--hiq-gray-light);
+    --info-icon-color: var(--hiq-gray);
+    --controls-background-color: var(--hiq-gray-dark);
+    --pill-background-color: var(--hiq-gray-darker);
+    --editor-preview-background-color: var(--hiq-gray-darker);
+}

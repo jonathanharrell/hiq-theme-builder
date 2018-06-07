@@ -9,13 +9,27 @@
 <script>
     import Colors from './previews/Colors'
     import Typography from './previews/Typography'
+    import Buttons from './previews/Buttons'
+    import FormsInputs from './previews/FormsInputs'
+    import MediaElements from './previews/MediaElements'
+    import Tables from './previews/Tables'
+    import CodeInput from './previews/CodeInput'
+    import Spacing from './previews/Spacing'
+    import Motion from './previews/Motion'
 
     export default {
         name: 'preview',
 
         components: {
             Colors,
-            Typography
+            Typography,
+            Buttons,
+            FormsInputs,
+            MediaElements,
+            Tables,
+            CodeInput,
+            Spacing,
+            Motion
         },
 
         computed: {
@@ -90,10 +104,11 @@
     /deep/ .variable-label {
         margin: 0.5rem 0 0;
         font-weight: var(--hiq-font-weight-medium);
+        color: var(--hiq-gray);
     }
 
     .theme-dark /deep/ .variable-label {
-        color: var(--hiq-gray-lighter);
+        color: var(--hiq-gray-light);
     }
 
     /deep/ .color-swatch {

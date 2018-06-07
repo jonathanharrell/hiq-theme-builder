@@ -110,8 +110,8 @@
                 if (this.expanded) this.$el.scrollIntoView()
             },
 
-            updateVariable ({ name, value }) {
-                this.$store.commit('updateVariable', { name, value })
+            async updateVariable ({ name, value }) {
+                await this.$store.commit('updateVariable', { name, value })
             }
         }
     }
