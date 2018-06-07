@@ -107,11 +107,15 @@
         flex: 0 0 14rem;
         border-left: 1px solid var(--editor-panel-border-color);
         background-color: var(--editor-panel-background-color);
+        transition:
+            border-color var(--hiq-speed) var(--hiq-easing),
+            background-color var(--hiq-speed) var(--hiq-easing);
     }
 
     .settings-section {
         padding: 1rem 1.25rem;
         border-top: 1px solid var(--editor-panel-border-color);
+        transition: border-color var(--hiq-speed) var(--hiq-easing);
     }
 
     .settings-section-title {

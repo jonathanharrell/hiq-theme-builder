@@ -46,5 +46,8 @@
         overflow-y: auto;
         border-right: 1px solid var(--editor-panel-border-color);
         background-color: var(--editor-panel-background-color);
+        transition:
+            border-color var(--hiq-speed) var(--hiq-easing),
+            background-color var(--hiq-speed) var(--hiq-easing);
     }
 </style>

@@ -42,6 +42,9 @@
     --hiq-input-border-color: var(--hiq-gray-lighter);
     --hiq-input-background-color: white;
 
+    --hiq-speed: 0.1s;
+    --hiq-easing: ease-out;
+
     --secondary-button-background-color: var(--hiq-gray-lighter);
     --secondary-button-border-color: var(--hiq-gray-lighter);
     --secondary-button-text-color: var(--hiq-gray);

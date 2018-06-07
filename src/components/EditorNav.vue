@@ -94,6 +94,9 @@
         padding: 1rem 0;
         border-right: 1px solid var(--editor-nav-border-color);
         background-color: var(--editor-nav-background-color);
+        transition:
+            border-color var(--hiq-speed) var(--hiq-easing),
+            background-color var(--hiq-speed) var(--hiq-easing);
     }
 
     .editor-nav a {

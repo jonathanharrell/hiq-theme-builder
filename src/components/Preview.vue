@@ -72,6 +72,7 @@
         overflow-y: auto;
         padding: 2rem;
         background-color: var(--editor-preview-background-color);
+        transition: background-color var(--hiq-speed) var(--hiq-easing);
     }
 
     .preview-content-wrapper {
@@ -81,6 +82,9 @@
         padding: 2rem;
         border: 1px solid var(--editor-panel-border-color);
         background-color: var(--controls-background-color);
+        transition:
+            border-color var(--hiq-speed) var(--hiq-easing),
+            background-color var(--hiq-speed) var(--hiq-easing);
     }
 
     .theme-dark .preview-content-wrapper {

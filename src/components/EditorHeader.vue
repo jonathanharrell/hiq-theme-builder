@@ -79,6 +79,7 @@
         height: 4rem;
         background-color: var(--navbar-background-color);
         box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+        transition: background-color var(--hiq-speed) var(--hiq-easing);
         & .container {
             display: flex;
             align-items: center;
@@ -101,6 +102,7 @@
     .theme-name-text {
         font-weight: var(--hiq-font-weight-medium);
         color: var(--hiq-text-color);
+        transition: color var(--hiq-speed) var(--hiq-easing);
     }
 
     .edit-theme-name {

@@ -15,6 +15,7 @@
         display: flex;
         border: 1px solid var(--hiq-input-border-color);
         border-radius: var(--hiq-border-radius);
+        transition: border-color var(--hiq-speed) var(--hiq-easing);
         & > * {
             flex: 1;
             padding: 0;
@@ -25,6 +26,9 @@
             font-weight: var(--hiq-font-weight-normal);
             text-transform: uppercase;
             color: var(--secondary-button-text-color);
+            transition:
+                border-color var(--hiq-speed) var(--hiq-easing),
+                background-color var(--hiq-speed) var(--hiq-easing);
             &:hover {
                 color: var(--secondary-button-hover-text-color);
             }
