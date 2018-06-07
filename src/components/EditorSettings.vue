@@ -23,10 +23,6 @@
             <h3 class="settings-section-title">Reset Theme</h3>
             <button class="is-secondary is-full-width" @click="resetTheme">Reset</button>
         </section>
-        <section class="settings-section preview-theme">
-            <h3 class="settings-section-title">Preview Theme</h3>
-            <button class="is-secondary is-full-width">Preview</button>
-        </section>
         <section class="settings-section export-theme">
             <h3 class="settings-section-title">Export Theme</h3>
             <h4 class="settings-subsection-title">File Format</h4>

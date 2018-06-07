@@ -8,8 +8,7 @@
         <h2>Code blocks</h2>
         <section class="code-section">
             <pre><code>&lt;p&gt;This is a sample paragraph.&lt;/p&gt;
-&lt;p&gt;This is another sample paragraph.&lt;/p&gt;
-</code></pre>
+            &lt;p&gt;This is another sample paragraph.&lt;/p&gt;</code></pre>
         </section>
         <h2>User Input</h2>
         <section class="code-section">

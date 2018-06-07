@@ -265,17 +265,9 @@
         }
         & p {
             margin-bottom: 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
         & fieldset {
             margin-bottom: 0;
-        }
-    }
-
-    .range-inputs {
-        & p {
-            overflow: visible;
         }
     }
 </style>
