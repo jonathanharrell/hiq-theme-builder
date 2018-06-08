@@ -1,23 +1,28 @@
 <template>
     <div id="app" class="app-wrapper" :class="['theme-' + editorTheme]">
-        <div v-if="loading">Loading...</div>
-        <editor v-else></editor>
+        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" mode="out-in">
+            <loader v-if="loading"></loader>
+            <editor v-else></editor>
+        </transition>
     </div>
 </template>
 
 <script>
     import axios from 'axios'
+    import Loader from './Loader'
     import Editor from './Editor'
 
     export default {
         name: 'app',
 
         components: {
+            Loader,
             Editor
         },
 
         data () {
             return {
+                loaded: false,
                 loading: false
             }
         },
@@ -36,6 +41,13 @@
             async getVariableConfig () {
                 this.loading = true
 
+                const timer = setInterval(() => {
+                    if (this.loaded) {
+                        this.loading = false
+                        clearInterval(timer)
+                    }
+                }, 1000)
+
                 const { data } = await axios.get('https://raw.githubusercontent.com/jonathanharrell/hiq/master/_data/custom-properties.yml')
                 const variableConfig = this.extractConfig(data)
                 const defaultValues = await this.getDefaultValueData()
@@ -46,7 +58,7 @@
                 })
 
                 this.storeVariables(variableConfig)
-                this.loading = false
+                this.loaded = true
             },
 
             extractConfig (data) {
@@ -113,7 +125,12 @@
 
 <style>
     @import '../../node_modules/hiq/dist/hiq.css';
+    @import '../../node_modules/animate.css/animate.css';
     @import '../assets/css/variables.css';
     @import '../assets/css/dark-theme.css';
     @import '../assets/css/global.css';
+
+    .app-wrapper {
+        background-color: var(--editor-preview-background-color);
+    }
 </style>

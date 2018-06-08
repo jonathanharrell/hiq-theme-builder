@@ -6,7 +6,7 @@
          :aria-labelledby="iconName"
          role="presentation"
     >
-        <title :id="iconName" lang="en">{{iconName}} icon</title>
+        <title :id="iconName" lang="en" v-if="iconName">{{iconName}} icon</title>
         <g :fill="iconColor">
             <slot />
         </g>
@@ -19,8 +19,7 @@
 
         props: {
             iconName: {
-                type: String,
-                required: true
+                type: String
             },
             width: {
                 type: [Number, String],

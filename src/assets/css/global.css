@@ -23,3 +23,19 @@
     font-size: var(--hiq-font-size-small);
     color: var(--hiq-gray-lighter);
 }
+
+.animated {
+    animation-duration: 0.5s;
+}
+
+.grow-height-enter-active,
+.grow-height-leave-active {
+    transition: max-height var(--hiq-speed) var(--hiq-easing);
+    will-change: max-height;
+}
+
+.grow-height-enter,
+.grow-height-leave-to {
+    max-height: 0;
+    overflow: hidden;
+}

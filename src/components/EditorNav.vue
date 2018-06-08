@@ -8,6 +8,7 @@
                 trigger="hover"
                 :options="{ placement: 'right' }"
                 :delay-on-mouse-out="0"
+                enter-active-class="animated fadeInLeft"
             >
                 <span class="controls tooltip">
                     {{ category.label }}
@@ -90,6 +91,8 @@
     .editor-nav {
         display: flex;
         flex-direction: column;
+        position: relative;
+        z-index: 5;
         width: 4rem;
         padding: 1rem 0;
         border-right: 1px solid var(--editor-nav-border-color);

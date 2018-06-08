@@ -76,6 +76,7 @@
         display: flex;
         align-items: center;
         position: relative;
+        z-index: 10;
         height: 4rem;
         background-color: var(--navbar-background-color);
         box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
