@@ -1,8 +1,12 @@
 <template>
     <div id="app" class="app-wrapper" :class="['theme-' + editorTheme]">
-        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" mode="out-in">
+        <transition
+            enter-active-class="animated fadeIn"
+            leave-active-class="animated fadeOut"
+            mode="out-in"
+        >
             <loader v-if="loading"></loader>
-            <editor v-else></editor>
+            <router-view v-else></router-view>
         </transition>
     </div>
 </template>

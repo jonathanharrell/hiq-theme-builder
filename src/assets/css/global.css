@@ -30,6 +30,7 @@
 
 .grow-height-enter-active,
 .grow-height-leave-active {
+    max-height: 5000px;
     transition: max-height var(--hiq-speed) var(--hiq-easing);
     will-change: max-height;
 }

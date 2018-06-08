@@ -87,6 +87,9 @@
 <style scoped>
     .color-input {
         position: relative;
+        & > span {
+            display: block;
+        }
     }
 
     button {

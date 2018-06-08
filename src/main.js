@@ -1,12 +1,21 @@
 import Vue from 'vue'
+import firebase from 'firebase/app'
+import './firebase'
 import store from './store'
 import App from './components/App'
 import router from './router'
 
-/* eslint-disable no-new */
-new Vue({
-    el: '#app',
-    store,
-    router,
-    render: h => h(App)
+let app
+
+firebase.auth().onAuthStateChanged(user => {
+    // store.commit('setCurrentUser', user)
+
+    if (!app) {
+        app = new Vue({
+            el: '#app',
+            router,
+            store,
+            render: h => h(App)
+        })
+    }
 })

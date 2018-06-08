@@ -23,7 +23,7 @@
                     </icon-base>
                 </button>
             </div>
-            <a href="">Sign In</a>
+            <router-link to="/sign-in">Sign In</router-link>
         </div>
     </header>
 </template>
