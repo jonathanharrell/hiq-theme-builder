@@ -23,6 +23,7 @@
                     </icon-base>
                 </button>
             </div>
+            <a href="https://jonathanharrell.github.io/hiq/" class="documentation-link">Documentation</a>
             <span class="user-links" v-if="currentUser">
                 <router-link to="/themes">Themes</router-link>
                 <a @click="signOut">Sign Out</a>
@@ -97,6 +98,17 @@
 </script>
 
 <style scoped>
+    .container {
+        position: relative;
+    }
+
+    .theme-name,
+    form {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
     .theme-name {
         display: flex;
         align-items: center;
@@ -132,6 +144,11 @@
 
     input {
         width: auto;
+    }
+
+    .documentation-link {
+        margin-right: 1rem;
+        margin-left: auto;
     }
 
     .user-links {

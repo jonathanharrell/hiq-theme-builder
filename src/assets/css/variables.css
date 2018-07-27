@@ -61,4 +61,5 @@
     --controls-background-color: white;
     --pill-background-color: var(--hiq-gray-lightest);
     --editor-preview-background-color: var(--hiq-gray-lightest);
+    --theme-thumbnail-height: 7.25rem;
 }

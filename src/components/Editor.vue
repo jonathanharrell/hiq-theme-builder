@@ -1,15 +1,21 @@
 <template>
     <div class="editor">
-        <editor-header></editor-header>
-        <div class="loading" v-if="loading">
-            Loading...
-        </div>
-        <main v-else>
-            <editor-nav></editor-nav>
-            <editor-category></editor-category>
-            <router-view></router-view>
-            <editor-settings></editor-settings>
-        </main>
+        <transition-group
+            enter-active-class="animated fadeIn"
+            leave-active-class="animated fadeOut"
+            mode="out-in"
+        >
+            <div class="loading" key="loading" v-if="loading">
+                Loading...
+            </div>
+            <editor-header key="header" v-if="!loading"></editor-header>
+            <main key="main" v-if="!loading">
+                <editor-nav></editor-nav>
+                <editor-category></editor-category>
+                <router-view></router-view>
+                <editor-settings></editor-settings>
+            </main>
+        </transition-group>
     </div>
 </template>
 

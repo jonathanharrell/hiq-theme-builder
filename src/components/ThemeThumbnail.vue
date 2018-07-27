@@ -7,24 +7,38 @@
             <h2 class="theme-name">
                 {{ name }}
             </h2>
-            <button @click.stop="deleteTheme()">Delete</button>
+            <button @click.stop="deleteTheme()" class="delete-theme">
+                <icon-base iconName="Delete" :height="24"><icon-trash></icon-trash></icon-base>
+            </button>
         </header>
-        <span class="color-swatch" :style="{ backgroundColor: primaryColor }"></span>
+        <span
+            v-for="(value, color) in colors"
+            :key="color"
+            class="color-swatch"
+            :style="{ backgroundColor: value }"
+        ></span>
     </article>
 </template>
 
 <script>
     import firebase from 'firebase/app'
+    import IconBase from './icons/IconBase'
+    import IconTrash from './icons/IconTrash'
 
     const collection = firebase.firestore().collection('themes')
 
     export default {
         name: 'them-thumbnail',
 
+        components: {
+            IconBase,
+            IconTrash
+        },
+
         props: [
             'name',
             'id',
-            'primaryColor'
+            'colors'
         ],
 
         computed: {
@@ -49,12 +63,18 @@
 
 <style scoped>
     .theme-thumbnail {
-        height: 8rem;
+        height: var(--theme-thumbnail-height);
         padding: 1.25rem 1.5rem;
         border-radius: var(--hiq-border-radius);
-        background-color: white;
+        background-color: var(--editor-panel-background-color);
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+        color: var(--hiq-text-color);
+        transition: transform var(--hiq-speed) var(--hiq-easing);
         cursor: pointer;
+        &:hover {
+            box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+            transform: scale(1.025);
+        }
     }
 
     .theme-thumbnail-header {
@@ -69,10 +89,23 @@
         font-weight: var(--hiq-font-weight-medium);
     }
 
+    .delete-theme {
+        padding: 0;
+        border: 0;
+        background-color: transparent;
+        color: var(--hiq-gray-lighter);
+        &:hover,
+        &:focus,
+        &:active {
+            color: var(--hiq-gray-light);
+        }
+    }
+
     .color-swatch {
         display: inline-block;
         width: 2rem;
         height: 2rem;
+        margin-right: 0.5rem;
         border-radius: var(--hiq-border-radius);
     }
 </style>
