@@ -13,18 +13,16 @@
             </div>
         </header>
         <div class="themes-grid">
-            <article
-                class="theme-thumbnail"
+            <theme-thumbnail
                 :key="theme.id"
+                :name="theme.name"
+                :id="theme.id"
+                :primary-color="theme['color-primary']"
                 v-for="theme in themes"
-                @click="loadTheme(theme.id)"
-            >
-                {{ theme.name }}
-                {{ theme.id }}
-                {{ theme['color-primary'] }}
-                <button @click.stop="deleteTheme(theme.id)">Delete</button>
-            </article>
-            <button @click="createTheme">Create New Theme</button>
+            ></theme-thumbnail>
+            <button @click="createTheme" class="create-theme" :disabled="creating">
+                {{ creating ? 'Creating...' : 'Create New Theme' }}
+            </button>
         </div>
     </div>
 </template>
@@ -33,15 +31,21 @@
     import firebase from 'firebase/app'
     import 'firebase/auth'
     import 'firebase/firestore'
+    import ThemeThumbnail from './ThemeThumbnail'
 
     const collection = firebase.firestore().collection('themes')
 
     export default {
         name: 'themes',
 
+        components: {
+            ThemeThumbnail
+        },
+
         data () {
             return {
-                loading: false
+                loading: false,
+                creating: false
             }
         },
 
@@ -83,21 +87,13 @@
             },
 
             async createTheme () {
+                this.creating = true
                 const { id } = await collection.add({
                     editorTheme: 'light',
                     name: 'Untitled Theme',
                     variables: this.$store.state.defaultVariables
                 })
-                this.$router.push({ name: 'theme', params: { id } })
-            },
-
-            async deleteTheme (id) {
-                await collection.doc(id).delete()
-                const themes = this.themes.filter(theme => theme.id !== id)
-                this.$store.commit('setThemes', themes)
-            },
-
-            loadTheme (id) {
+                this.creating = false
                 this.$router.push({ name: 'theme', params: { id } })
             }
         }
@@ -109,9 +105,21 @@
         height: 100vh;
     }
 
+    .themes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+        grid-gap: var(--hiq-container-horizontal-gap);
+        width: 100%;
+        padding: var(--hiq-container-horizontal-gap);
+    }
+
     h1 {
         margin: 0;
         font-size: var(--hiq-font-size-base);
         color: var(--hiq-text-color);
+    }
+
+    .create-theme {
+        height: 8rem;
     }
 </style>
