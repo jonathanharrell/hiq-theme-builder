@@ -8,6 +8,9 @@
             <loader v-if="loading"></loader>
             <router-view v-else></router-view>
         </transition>
+        <p v-if="error" class="app-error">
+            There was a problem loading the theme editor.
+        </p>
     </div>
 </template>
 
@@ -27,7 +30,8 @@
         data () {
             return {
                 loaded: false,
-                loading: false
+                loading: false,
+                error: false
             }
         },
 
@@ -52,34 +56,35 @@
                     }
                 }, 1000)
 
-                const { data } = await axios.get('https://raw.githubusercontent.com/jonathanharrell/hiq/master/_data/custom-properties.yml')
-                const variableConfig = this.extractConfig(data)
-                const defaultValues = await this.getDefaultValueData()
+                try {
+                    const { data } = await axios.get('https://raw.githubusercontent.com/jonathanharrell/hiq/master/docs/.vuepress/data/custom-properties.js')
+                    const variableConfig = this.extractConfig(data)
+                    const defaultValues = await this.getDefaultValueData()
 
-                Object.keys(variableConfig).forEach(variable => {
-                    const defaultValue = defaultValues[variable]
-                    if (defaultValue) variableConfig[variable].default = defaultValue
-                })
+                    Object.keys(variableConfig).forEach(variable => {
+                        const defaultValue = defaultValues[variable]
+                        if (defaultValue) variableConfig[variable].default = defaultValue
+                    })
 
-                this.storeVariables(variableConfig)
-                this.loaded = true
+                    this.storeVariables(variableConfig)
+                    this.loaded = true
+                } catch (error) {
+                    this.loading = false
+                    this.error = true
+                    console.log(error)
+                }
             },
 
             extractConfig (data) {
-                return data
-                    .split('- ')
-                    .filter(block => block.length)
-                    .map(block => {
-                        return block
-                            .split('\n ')
-                            .reduce((obj, item) => {
-                                const [ key, value ] = item.split(':')
-                                obj[key.trim()] = value
-                                    .trim()
-                                    .replace(/"/g, '')
-                                return obj
-                            }, {})
-                    }).reduce((obj, item) => {
+                const config = data
+                    .replace('module.exports = ', '')
+                    .replace(/:/g, '":')
+                    .replace(/ {8}/g, '        "')
+                    .replace(/,\n {4}}/g, '\n    }')
+
+                return JSON
+                    .parse(config)
+                    .reduce((obj, item) => {
                         const variable = item.name
                         delete item.name
                         obj[variable] = {...item}
@@ -118,10 +123,7 @@
                 })
 
                 this.$store.commit('setDefaultVariables', data)
-
-                const storedVariables = localStorage.getItem('hiqThemeBuilderVariables')
-                if (storedVariables) this.$store.commit('setVariables', JSON.parse(storedVariables))
-                else this.$store.commit('setVariables', data)
+                this.$store.commit('setVariables', data)
             }
         }
     }
@@ -133,8 +135,23 @@
     @import '../assets/css/variables.css';
     @import '../assets/css/dark-theme.css';
     @import '../assets/css/global.css';
+    @import '../assets/css/navbar.css';
+    @import '../assets/css/loading.css';
 
     .app-wrapper {
         background-color: var(--editor-preview-background-color);
+    }
+
+    .app-error {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: var(--hiq-gray-lightest);
     }
 </style>

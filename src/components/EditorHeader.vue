@@ -23,14 +23,22 @@
                     </icon-base>
                 </button>
             </div>
-            <router-link to="/sign-in">Sign In</router-link>
+            <span class="user-links" v-if="currentUser">
+                <router-link to="/themes">Themes</router-link>
+                <a @click="signOut">Sign Out</a>
+            </span>
+            <router-link to="/sign-in" v-else>Sign In</router-link>
         </div>
     </header>
 </template>
 
 <script>
+    import firebase from 'firebase/app'
+    import 'firebase/auth'
     import IconBase from './icons/IconBase'
     import IconPencil from './icons/IconPencil'
+
+    const collection = firebase.firestore().collection('themes')
 
     export default {
         name: 'editor-header',
@@ -49,6 +57,10 @@
         computed: {
             themeName () {
                 return this.$store.state.themeName
+            },
+
+            currentUser () {
+                return this.$store.state.currentUser
             }
         },
 
@@ -61,10 +73,23 @@
         },
 
         methods: {
-            saveThemeName (event) {
+            async signOut () {
+                await firebase.auth().signOut()
+                this.$router.push({ name: 'sign-in' })
+            },
+
+            async saveThemeName (event) {
                 const formData = new FormData(event.target)
                 const value = formData.get('theme_name')
                 this.$store.commit('setThemeName', value)
+
+                if (this.currentUser && this.$route.params.id) {
+                    const entryRef = collection.doc(this.$route.params.id)
+                    await entryRef.update({
+                        name: value
+                    })
+                }
+
                 this.editMode = false
             }
         }
@@ -72,29 +97,6 @@
 </script>
 
 <style scoped>
-    .navbar {
-        display: flex;
-        align-items: center;
-        position: relative;
-        z-index: 10;
-        height: 4rem;
-        background-color: var(--navbar-background-color);
-        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
-        transition: background-color var(--hiq-speed) var(--hiq-easing);
-        & .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-    }
-
-    .logo {
-        margin-bottom: 0;
-        & img {
-            height: 2.75rem;
-        }
-    }
-
     .theme-name {
         display: flex;
         align-items: center;
@@ -130,5 +132,11 @@
 
     input {
         width: auto;
+    }
+
+    .user-links {
+        & a:not(:last-child) {
+            margin-right: 1rem;
+        }
     }
 </style>

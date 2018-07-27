@@ -19,6 +19,13 @@
                 </button>
             </button-group>
         </section>
+        <section class="settings-section save-theme" v-if="currentUser && $route.params.id">
+            <h3 class="settings-section-title">Save Theme</h3>
+            <button class="is-primary is-full-width" @click="saveTheme" :disabled="saving">
+                <span v-if="saving">Saving...</span>
+                <span v-else>Save</span>
+            </button>
+        </section>
         <section class="settings-section reset-theme">
             <h3 class="settings-section-title">Reset Theme</h3>
             <button class="is-secondary is-full-width" @click="resetTheme">Reset</button>
@@ -42,9 +49,12 @@
 </template>
 
 <script>
+    import firebase from 'firebase/app'
     import ButtonGroup from './base/ButtonGroup'
     import ColorSwatch from './base/ColorSwatch'
     import { createVariablesString } from '../helpers'
+
+    const collection = firebase.firestore().collection('themes')
 
     export default {
         name: 'editor-settings',
@@ -57,7 +67,8 @@
         data () {
             return {
                 fileFormats: ['css', 'pcss'],
-                activeFileFormat: 'css'
+                activeFileFormat: 'css',
+                saving: false
             }
         },
 
@@ -68,12 +79,36 @@
 
             variables () {
                 return this.$store.state.variables
+            },
+
+            currentUser () {
+                return this.$store.state.currentUser
             }
         },
 
         methods: {
-            setEditorTheme (theme) {
+            async setEditorTheme (theme) {
                 this.$store.commit('setEditorTheme', theme)
+
+                if (this.currentUser && this.$route.params.id) {
+                    const entryRef = collection.doc(this.$route.params.id)
+                    await entryRef.update({
+                        editorTheme: theme
+                    })
+                }
+            },
+
+            async saveTheme () {
+                if (this.currentUser && this.$route.params.id) {
+                    this.saving = true
+
+                    const entryRef = await collection.doc(this.$route.params.id)
+                    await entryRef.update({
+                        variables: this.$store.state.variables
+                    })
+
+                    this.saving = false
+                }
             },
 
             resetTheme () {
@@ -129,6 +164,13 @@
         font-size: var(--hiq-font-size-base);
         font-weight: var(--hiq-font-weight-normal);
         color: var(--label-color);
+    }
+
+    .save-theme {
+        margin-top: auto;
+        & + .reset-theme {
+            margin-top: unset;
+        }
     }
 
     .reset-theme {

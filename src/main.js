@@ -8,7 +8,8 @@ import router from './router'
 let app
 
 firebase.auth().onAuthStateChanged(user => {
-    // store.commit('setCurrentUser', user)
+    store.commit('setCurrentUser', user)
+    store.dispatch('clearTempData')
 
     if (!app) {
         app = new Vue({

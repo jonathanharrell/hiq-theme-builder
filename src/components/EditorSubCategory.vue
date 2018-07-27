@@ -100,6 +100,10 @@
                         obj[variable] = config
                         return obj
                     }, {})
+            },
+
+            currentUser () {
+                return this.$store.state.currentUser
             }
         },
 

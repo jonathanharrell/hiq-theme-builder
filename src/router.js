@@ -24,13 +24,14 @@ const routes = [
         }
     },
     {
-        path: '/',
-        redirect: '/colors',
+        name: 'theme',
+        path: '/theme/:id?',
+        redirect: '/theme/:id?/colors',
         component: Editor,
         children: [
             {
                 name: 'editor-category',
-                path: '/:category',
+                path: '/theme/:id?/:category',
                 component: Preview
             }
         ]
@@ -47,7 +48,11 @@ router.beforeEach((to, from, next) => {
     const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
 
     if (requiresAuth && !currentUser) next('sign-in')
-    else if (!requiresAuth && currentUser) next('themes')
+    if (to.path === '/') {
+        if (currentUser) next('themes')
+        else next('theme')
+    }
+    if (currentUser && to.name === 'editor-category' && !to.params.id) next('themes')
     else next()
 })
 
