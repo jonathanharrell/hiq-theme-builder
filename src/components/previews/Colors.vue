@@ -96,5 +96,6 @@
     .color-swatch {
         padding: 35% 0;
         border-radius: var(--hiq-border-radius);
+        transition: border-color var(--hiq-speed) var(--hiq-easing);
     }
 </style>

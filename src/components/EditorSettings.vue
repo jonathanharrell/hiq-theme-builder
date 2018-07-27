@@ -138,8 +138,14 @@
 <style scoped>
     .editor-settings {
         display: flex;
+        position: fixed;
+        top: 0;
+        right: 0;
         flex-direction: column;
         flex: 0 0 14rem;
+        width: var(--editor-settings-width);
+        height: calc(100vh - var(--navbar-height));
+        margin-top: var(--navbar-height);
         border-left: 1px solid var(--editor-panel-border-color);
         background-color: var(--editor-panel-background-color);
         transition:

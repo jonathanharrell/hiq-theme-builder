@@ -98,10 +98,6 @@
 </script>
 
 <style scoped>
-    .container {
-        position: relative;
-    }
-
     .theme-name,
     form {
         position: absolute;

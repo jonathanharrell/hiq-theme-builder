@@ -15,7 +15,7 @@
     --hiq-color-danger: hsl(352, 95%, 61%);
 
     /* applied colors */
-    --hiq-html-background-color: var(--hiq-gray-darkest);
+    --hiq-html-background-color: var(--editor-preview-background-color);
     --hiq-selection-color: hsl(210, 100%, 90%);
 
     --hiq-container-horizontal-gap: 1rem;
@@ -51,8 +51,10 @@
     --secondary-button-text-color: var(--hiq-gray);
     --secondary-button-hover-text-color: var(--hiq-gray-dark);
     --navbar-background-color: white;
+    --editor-nav-width: 4rem;
     --editor-nav-background-color: white;
     --editor-nav-border-color: var(--hiq-gray-lighter);
+    --editor-category-width: 22rem;
     --tooltip-background-color: var(--hiq-gray-dark);
     --editor-panel-background-color: hsl(220, 10%, 98%);
     --editor-panel-border-color: var(--hiq-gray-lighter);
@@ -61,5 +63,7 @@
     --controls-background-color: white;
     --pill-background-color: var(--hiq-gray-lightest);
     --editor-preview-background-color: var(--hiq-gray-lightest);
+    --editor-settings-width: 15rem;
     --theme-thumbnail-height: 7.25rem;
+    --navbar-height: 4rem;
 }

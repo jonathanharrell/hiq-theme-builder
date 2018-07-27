@@ -253,6 +253,7 @@
     .form-section {
         padding: 1.5rem 1.5rem;
         border: 1px solid var(--editor-panel-border-color);
+        transition: border-color var(--hiq-speed) var(--hiq-easing);
         &:not(:last-of-type) {
             margin-bottom: 2rem;
         }

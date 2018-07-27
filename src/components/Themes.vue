@@ -121,10 +121,6 @@
 </script>
 
 <style scoped>
-    .themes {
-        height: 100vh;
-    }
-
     .navbar .container {
         position: relative;
     }
@@ -145,6 +141,8 @@
         grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
         grid-gap: var(--hiq-container-horizontal-gap);
         width: 100%;
+        height: calc(100vh - var(--navbar-height));
+        margin-top: var(--navbar-height);
         padding: var(--hiq-container-horizontal-gap);
     }
 

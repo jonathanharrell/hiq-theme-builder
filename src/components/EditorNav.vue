@@ -91,9 +91,10 @@
     .editor-nav {
         display: flex;
         flex-direction: column;
-        position: relative;
+        position: fixed;
         z-index: 5;
-        width: 4rem;
+        width: var(--editor-nav-width);
+        height: calc(100vh - var(--navbar-height));
         padding: 1rem 0;
         border-right: 1px solid var(--editor-nav-border-color);
         background-color: var(--editor-nav-background-color);

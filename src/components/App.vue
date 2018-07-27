@@ -139,6 +139,8 @@
     @import '../assets/css/loading.css';
 
     .app-wrapper {
+        position: fixed;
+        width: 100vw;
         background-color: var(--editor-preview-background-color);
     }
 

@@ -1,14 +1,18 @@
 .navbar {
     display: flex;
     align-items: center;
-    position: relative;
+    position: fixed;
+    top: 0;
     z-index: 10;
-    height: 4rem;
+    width: 100%;
+    min-width: 50rem;
+    height: var(--navbar-height);
     background-color: var(--navbar-background-color);
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
     transition: background-color var(--hiq-speed) var(--hiq-easing);
     & .container {
         display: flex;
+        position: relative;
         align-items: center;
         justify-content: space-between;
     }
@@ -18,4 +22,8 @@
             height: 2.75rem;
         }
     }
+}
+
+main {
+    margin-top: var(--navbar-height);
 }

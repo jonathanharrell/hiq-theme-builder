@@ -43,7 +43,11 @@
 <style scoped>
     .editor-category {
         flex: 0 0 18rem;
+        position: fixed;
+        width: var(--editor-category-width);
+        height: calc(100vh - var(--navbar-height));
         overflow-y: auto;
+        margin-left: var(--editor-nav-width);
         border-right: 1px solid var(--editor-panel-border-color);
         background-color: var(--editor-panel-background-color);
         transition:
