@@ -50,7 +50,12 @@
 
         methods: {
             async deleteTheme () {
-                await collection.doc(this.id).delete()
+                try {
+                    await collection.doc(this.id).delete()
+                } catch (error) {
+                    console.error(error)
+                }
+
                 const themes = this.themes.filter(theme => theme.id !== this.id)
                 this.$store.commit('setThemes', themes)
             },

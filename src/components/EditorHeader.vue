@@ -75,8 +75,12 @@
 
         methods: {
             async signOut () {
-                await firebase.auth().signOut()
-                this.$router.push({ name: 'sign-in' })
+                try {
+                    await firebase.auth().signOut()
+                    this.$router.push({ name: 'sign-in' })
+                } catch (error) {
+                    console.error(error)
+                }
             },
 
             async saveThemeName (event) {
@@ -86,9 +90,14 @@
 
                 if (this.currentUser && this.$route.params.id) {
                     const entryRef = collection.doc(this.$route.params.id)
-                    await entryRef.update({
-                        name: value
-                    })
+
+                    try {
+                        await entryRef.update({
+                            name: value
+                        })
+                    } catch (error) {
+                        console.error(error)
+                    }
                 }
 
                 this.editMode = false

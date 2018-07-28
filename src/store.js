@@ -26,7 +26,9 @@ const store = new Vuex.Store({
             const reorderedVariables = {}
 
             for (let variable in state.defaultVariables) {
-                reorderedVariables[variable] = variables[variable]
+                if (state.defaultVariables.hasOwnProperty(variable)) {
+                    reorderedVariables[variable] = variables[variable]
+                }
             }
 
             state.variables = reorderedVariables

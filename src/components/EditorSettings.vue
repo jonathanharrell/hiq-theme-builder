@@ -92,9 +92,14 @@
 
                 if (this.currentUser && this.$route.params.id) {
                     const entryRef = collection.doc(this.$route.params.id)
-                    await entryRef.update({
-                        editorTheme: theme
-                    })
+
+                    try {
+                        await entryRef.update({
+                            editorTheme: theme
+                        })
+                    } catch (error) {
+                        console.error(error)
+                    }
                 }
             },
 
@@ -102,10 +107,14 @@
                 if (this.currentUser && this.$route.params.id) {
                     this.saving = true
 
-                    const entryRef = await collection.doc(this.$route.params.id)
-                    await entryRef.update({
-                        variables: this.$store.state.variables
-                    })
+                    try {
+                        const entryRef = await collection.doc(this.$route.params.id)
+                        await entryRef.update({
+                            variables: this.$store.state.variables
+                        })
+                    } catch (error) {
+                        console.error(error)
+                    }
 
                     this.saving = false
                 }

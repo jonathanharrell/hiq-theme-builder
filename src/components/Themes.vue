@@ -80,39 +80,50 @@
                 this.loading = true
                 let themes = []
 
-                const snapshot = await collection.get()
-                snapshot.forEach(doc => {
-                    themes.push({
-                        id: doc.id,
-                        name: doc.data().name,
-                        colors: {
-                            'color-primary': doc.data().variables['--hiq-color-primary'].value,
-                            'gray-darker': doc.data().variables['--hiq-gray-darker'].value,
-                            'gray': doc.data().variables['--hiq-gray'].value,
-                            'gray-lighter': doc.data().variables['--hiq-gray-lighter'].value
-                        },
-                        dateCreated: doc.data().dateCreated
+                try {
+                    const snapshot = await collection.get()
+                    snapshot.forEach(doc => {
+                        themes.push({
+                            id: doc.id,
+                            name: doc.data().name,
+                            colors: {
+                                'color-primary': doc.data().variables['--hiq-color-primary'].value,
+                                'gray-darker': doc.data().variables['--hiq-gray-darker'].value,
+                                'gray': doc.data().variables['--hiq-gray'].value,
+                                'gray-lighter': doc.data().variables['--hiq-gray-lighter'].value
+                            },
+                            dateCreated: doc.data().dateCreated
+                        })
                     })
-                })
 
-                themes = themes.sort((a, b) => {
-                    if (a.dateCreated > b.dateCreated) return -1
-                    if (a.dateCreated < b.dateCreated) return 1
-                    return 0
-                })
+                    themes = themes.sort((a, b) => {
+                        if (a.dateCreated > b.dateCreated) return -1
+                        if (a.dateCreated < b.dateCreated) return 1
+                        return 0
+                    })
 
-                this.$store.commit('setThemes', themes)
+                    this.$store.commit('setThemes', themes)
+                } catch (error) {
+                    console.error(error)
+                }
+
                 this.loading = false
             },
 
             async createTheme () {
                 this.creating = true
-                const { id } = await collection.add({
-                    editorTheme: 'light',
-                    name: 'Untitled Theme',
-                    variables: this.$store.state.defaultVariables,
-                    dateCreated: new Date()
-                })
+
+                try {
+                    const { id } = await collection.add({
+                        editorTheme: 'light',
+                        name: 'Untitled Theme',
+                        variables: this.$store.state.defaultVariables,
+                        dateCreated: new Date()
+                    })
+                } catch (error) {
+                    console.error(error)
+                }
+
                 this.creating = false
                 this.$router.push({ name: 'theme', params: { id } })
             }

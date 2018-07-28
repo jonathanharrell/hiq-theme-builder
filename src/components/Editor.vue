@@ -73,13 +73,17 @@
             },
 
             async getSavedValues () {
-                const snapshot = await collection.doc(this.$route.params.id).get()
-                this.loading = false
-                const { editorTheme, name, variables } = snapshot.data()
+               try {
+                   const snapshot = await collection.doc(this.$route.params.id).get()
+                   this.loading = false
+                   const { editorTheme, name, variables } = snapshot.data()
 
-                this.$store.commit('setEditorTheme', editorTheme)
-                this.$store.commit('setThemeName', name)
-                this.$store.commit('setVariables', variables)
+                   this.$store.commit('setEditorTheme', editorTheme)
+                   this.$store.commit('setThemeName', name)
+                   this.$store.commit('setVariables', variables)
+               } catch (error) {
+                   console.error(error)
+               }
             }
         }
     }
