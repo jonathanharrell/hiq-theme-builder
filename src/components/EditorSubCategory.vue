@@ -16,43 +16,41 @@
                 {{ label }}
             </button>
         </h3>
-        <transition name="grow-height">
+        <div
+            class="sub-category-controls"
+            :id="id"
+            v-if="expanded"
+        >
             <div
-                class="sub-category-controls"
-                :id="id"
-                v-if="expanded"
+                class="sub-category-control"
+                v-for="(config, variable) in filteredVariables"
+                :key="variable"
             >
-                <div
-                    class="sub-category-control"
-                    v-for="(config, variable) in filteredVariables"
-                    :key="variable"
-                >
-                    <label :for="variable">
-                        <span class="variable-name">{{ variable }}</span>
-                        <popper trigger="hover" :options="{ placement: 'bottom' }">
-                            <span class="controls tooltip" style="position: relative; z-index: 1000;">
-                                {{ config.description }}
-                            </span>
-                            <span slot="reference" class="get-info">
-                                <icon-base
-                                    icon-color="var(--info-icon-color)"
-                                    :width="12"
-                                    height="12"
-                                >
-                                    <icon-info></icon-info>
-                                </icon-base>
-                            </span>
-                        </popper>
-                    </label>
-                    <editor-input
-                        :type="config.type"
-                        :name="variable"
-                        :value="config.value"
-                        @input="updateVariable"
-                    ></editor-input>
-                </div>
+                <label :for="variable">
+                    <span class="variable-name">{{ variable }}</span>
+                    <popper trigger="hover" :options="{ placement: 'bottom' }">
+                        <span class="controls tooltip" style="position: relative; z-index: 1000;">
+                            {{ config.description }}
+                        </span>
+                        <span slot="reference" class="get-info">
+                            <icon-base
+                                icon-color="var(--info-icon-color)"
+                                :width="12"
+                                height="12"
+                            >
+                                <icon-info></icon-info>
+                            </icon-base>
+                        </span>
+                    </popper>
+                </label>
+                <editor-input
+                    :type="config.type"
+                    :name="variable"
+                    :value="config.value"
+                    @input="updateVariable"
+                ></editor-input>
             </div>
-        </transition>
+        </div>
     </section>
 </template>
 

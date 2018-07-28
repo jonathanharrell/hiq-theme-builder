@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>hiq-theme-builder</title>
-  </head>
-  <body>
+    <meta name="description" content="Easily create your own custom theme to use with the HiQ CSS framework.">
+    <title>HiQ Theme Builder</title>
+    <style>
+        .alert-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+
+        #app {
+            display: none;
+        }
+
+        @supports (color: var(--color-primary)) {
+            .alert-wrapper {
+                display: none;
+            }
+
+            #app {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="alert-wrapper">
+        <p class="alert">To use this theme builder, you must use a browser that supports CSS custom properties.</p>
+    </div>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-  </body>
+</body>
 </html>

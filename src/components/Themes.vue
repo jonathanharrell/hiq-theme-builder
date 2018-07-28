@@ -15,7 +15,7 @@
                     </figure>
                     <h1>{{ username ? `${username}'s ` : ''}}Themes</h1>
                     <a href="https://jonathanharrell.github.io/hiq/" class="documentation-link">Documentation</a>
-                    <a @click="signOut">Sign Out</a>
+                    <a @click="signOut" tabindex="0">Sign Out</a>
                 </div>
             </header>
             <div class="themes-grid" key="grid" v-if="!loading">

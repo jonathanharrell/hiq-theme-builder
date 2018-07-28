@@ -69,9 +69,10 @@
         align-items: flex-start;
         justify-content: center;
         flex: 1;
-        overflow-y: auto;
         width: calc(100% - var(--editor-nav-width) - var(--editor-category-width) - var(--editor-settings-width));
         min-width: 30rem;
+        height: calc(100vh - var(--navbar-height));
+        overflow-y: auto;
         margin-left: calc(var(--editor-nav-width) + var(--editor-category-width));
         padding: 2rem;
         background-color: var(--editor-preview-background-color);

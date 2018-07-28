@@ -16,6 +16,7 @@
         "firebase": "^5.0.4",
         "hiq": "^2.3.1-beta",
         "lodash": "^4.17.10",
+        "raven-js": "^3.26.4",
         "tinycolor2": "^1.4.1",
         "vue": "^2.5.2",
         "vue-color": "^2.4.6",

@@ -2,6 +2,7 @@
     <article
         class="theme-thumbnail"
         @click="loadTheme()"
+        tabindex="0"
     >
         <header class="theme-thumbnail-header">
             <h2 class="theme-name">
