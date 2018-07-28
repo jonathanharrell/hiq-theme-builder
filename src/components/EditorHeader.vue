@@ -26,7 +26,7 @@
             <a href="https://jonathanharrell.github.io/hiq/" class="documentation-link">Documentation</a>
             <span class="user-links" v-if="currentUser">
                 <router-link to="/themes">Themes</router-link>
-                <a @click="signOut">Sign Out</a>
+                <a @click="signOut" tabindex="0">Sign Out</a>
             </span>
             <router-link to="/sign-in" v-else>Sign In</router-link>
         </div>

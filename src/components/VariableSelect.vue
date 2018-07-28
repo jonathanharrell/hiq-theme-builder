@@ -5,6 +5,9 @@
             :options="variableOptions"
             :filterMethod="filterMethod"
             @input="handleInput"
+            @tabbed-down-out="$emit('tabbed-down-out')"
+            @tabbed-up-out="$emit('tabbed-up-out')"
+            ref="search-select"
         >
             <template slot-scope="{ option }">
                 <color-swatch :color="option[1].value" v-if="option[1].type === 'color'"></color-swatch>
@@ -54,6 +57,11 @@
             handleInput (option) {
                 this.inputValue = option[0]
                 this.$emit('select', `var(${option[0]})`)
+            },
+
+            async focusInput () {
+                await this.$nextTick()
+                this.$refs['search-select'].$el.querySelector('input').focus()
             }
         }
     }

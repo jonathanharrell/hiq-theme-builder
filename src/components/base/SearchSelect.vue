@@ -102,8 +102,20 @@
                     this.highlightPrev()
                 }
                 if (event.key === 'Enter') {
-                    const selectedOption = this.filteredOptions[this.highlightedIndex]
-                    if (selectedOption) this.selectOption(selectedOption)
+                    if (this.$refs.popper.showPopper) {
+                        const selectedOption = this.filteredOptions[this.highlightedIndex]
+                        if (selectedOption) this.selectOption(selectedOption)
+                    } else {
+                        this.$refs.popper.doShow()
+                    }
+                }
+                if (event.key === 'Tab') {
+                    if (this.$refs.popper) this.$refs.popper.doClose()
+                    if (!event.shiftKey) this.$emit('tabbed-down-out')
+                    else this.$emit('tabbed-up-out')
+                }
+                if (event.key === 'Escape') {
+                    if (this.$refs.popper) this.$refs.popper.doClose()
                 }
             },
 

@@ -12,6 +12,7 @@
                         :key="unit"
                         :class="{ active: activeUnit === unit}"
                         @click="updateUnit(unit)"
+                        @keydown.tab="handleUnitTab(unit, $event)"
                     >
                         {{ unit }}
                     </button>
@@ -23,6 +24,8 @@
                     type="number"
                     :name="name"
                     @select="handleVariableSelect"
+                    @tabbed-down-out="handleTabOut"
+                    ref="variable-select"
                 ></variable-select>
             </div>
             <div class="input-wrapper" slot="reference">
@@ -154,7 +157,17 @@
 
             handleInputKeydown (event) {
                 if (event.key === 'Enter') {
-                    if (this.$refs.popper) this.$refs.popper.doClose()
+                    if (this.$refs.popper) {
+                        if (!this.$refs.popper.showPopper) {
+                            this.$refs.popper.doShow()
+                        } else {
+                            this.$refs.popper.doClose()
+                        }
+                    }
+                }
+
+                if (event.key === 'Tab') {
+                    this.$refs['variable-select'].focusInput()
                 }
             },
 
@@ -164,6 +177,18 @@
                 } else {
                     this.$emit('input', `${this.unitlessValue}${unit || ''}`)
                 }
+            },
+
+            handleUnitTab (unit, event) {
+                if (unit === 'px' && event.key === 'Tab' && event.shiftKey) {
+                    this.handleTabOut()
+                }
+            },
+
+            async handleTabOut () {
+                this.$refs.popper.doClose()
+                await this.$nextTick()
+                this.$refs.input.focus()
             }
         }
     }

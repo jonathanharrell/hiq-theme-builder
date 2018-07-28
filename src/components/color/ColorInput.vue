@@ -7,8 +7,17 @@
             @show="handleShow"
         >
             <div class="controls" role="menu">
-                <color-picker :value="resolvedColor" @input="updateColorValue"></color-picker>
-                <variable-select type="color" :name="name" @select="handleVariableSelect"></variable-select>
+                <color-picker
+                    :value="resolvedColor"
+                    @input="updateColorValue"
+                    @tabbed-out="handleTabOut"
+                ></color-picker>
+                <variable-select
+                    type="color"
+                    :name="name"
+                    @select="handleVariableSelect"
+                    @tabbed-down-out="handleTabOut"
+                ></variable-select>
             </div>
             <button slot="reference" class="current-value" ref="button">
                 <color-swatch :color="resolvedColor"></color-swatch>
@@ -79,6 +88,12 @@
             async handleShow () {
                 await this.$nextTick()
                 this.$el.querySelector('input').focus()
+            },
+
+            async handleTabOut () {
+                this.$refs.popper.doClose()
+                await this.$nextTick()
+                this.$refs.button.focus()
             }
         }
     }

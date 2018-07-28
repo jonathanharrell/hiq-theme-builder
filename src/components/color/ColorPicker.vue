@@ -16,6 +16,7 @@
                 :key="mode"
                 :class="{ active: activeMode === mode}"
                 @click="activeMode = mode"
+                @keydown.tab="handleColorModeTab(mode, $event)"
             >
                 {{ mode }}
             </button>
@@ -102,6 +103,12 @@
             handleInput (value) {
                 const colorValue = this.formatColorString(value)
                 if (colorValue) this.$emit('input', colorValue)
+            },
+
+            handleColorModeTab (mode, event) {
+                if (mode === 'hsl' && event.key === 'Tab' && event.shiftKey) {
+                    this.$emit('tabbed-out')
+                }
             }
         }
     }

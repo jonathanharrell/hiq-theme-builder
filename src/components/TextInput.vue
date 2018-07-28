@@ -10,6 +10,9 @@
                     type="text"
                     :name="name"
                     @select="handleVariableSelect"
+                    ref="variable-select"
+                    @tabbed-down-out="handleTabOut"
+                    @tabbed-up-out="handleTabOut"
                 ></variable-select>
             </div>
             <input
@@ -68,8 +71,24 @@
 
             handleInputKeydown (event) {
                 if (event.key === 'Enter') {
-                    if (this.$refs.popper) this.$refs.popper.doClose()
+                    if (this.$refs.popper) {
+                        if (!this.$refs.popper.showPopper) {
+                            this.$refs.popper.doShow()
+                        } else {
+                            this.$refs.popper.doClose()
+                        }
+                    }
                 }
+
+                if (event.key === 'Tab') {
+                    this.$refs['variable-select'].focusInput()
+                }
+            },
+
+            async handleTabOut () {
+                this.$refs.popper.doClose()
+                await this.$nextTick()
+                this.$refs.input.focus()
             }
         }
     }
