@@ -52,6 +52,7 @@ router.beforeEach((to, from, next) => {
         if (currentUser) next('themes')
         else next('theme')
     }
+
     if (currentUser && to.name === 'editor-category' && !to.params.id) next('themes')
     else next()
 })

@@ -61,6 +61,10 @@
                 if (this.$store.state.currentUser) return this.$store.state.currentUser.displayName
             },
 
+            userId () {
+                if (this.$store.state.currentUser) return this.$store.state.currentUser.uid
+            },
+
             themes () {
                 return this.$store.state.themes
             }
@@ -81,7 +85,7 @@
                 let themes = []
 
                 try {
-                    const snapshot = await collection.get()
+                    const snapshot = await collection.where('creator', '==', this.userId).get()
                     snapshot.forEach(doc => {
                         themes.push({
                             id: doc.id,
@@ -118,14 +122,15 @@
                         editorTheme: 'light',
                         name: 'Untitled Theme',
                         variables: this.$store.state.defaultVariables,
-                        dateCreated: new Date()
+                        dateCreated: new Date(),
+                        creator: this.userId
                     })
+
+                    this.creating = false
+                    this.$router.push({ name: 'theme', params: { id } })
                 } catch (error) {
                     console.error(error)
                 }
-
-                this.creating = false
-                this.$router.push({ name: 'theme', params: { id } })
             }
         }
     }
