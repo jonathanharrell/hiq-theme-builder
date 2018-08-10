@@ -26,7 +26,9 @@
         watch: {
             '$route.params.category': async function () {
                 await this.$nextTick()
-                this.$refs.subcategories.children[0].querySelector('.sub-category-title button').focus()
+                if (this.$refs.subcategories) {
+                    this.$refs.subcategories.children[0].querySelector('.sub-category-title button').focus()
+                }
             }
         },
 

@@ -53,6 +53,10 @@ router.beforeEach((to, from, next) => {
         else next('theme')
     }
 
+    if (to.path === '/theme/theme') {
+        next('/theme/colors')
+    }
+
     if (currentUser && to.name === 'editor-category' && !to.params.id) next('themes')
     else next()
 })
