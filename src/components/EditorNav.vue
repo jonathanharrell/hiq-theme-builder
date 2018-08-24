@@ -91,7 +91,7 @@
     .editor-nav {
         display: flex;
         flex-direction: column;
-        position: fixed;
+        position: absolute;
         z-index: 5;
         width: var(--editor-nav-width);
         height: calc(100vh - var(--navbar-height));

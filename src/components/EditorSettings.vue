@@ -147,7 +147,7 @@
 <style scoped>
     .editor-settings {
         display: flex;
-        position: fixed;
+        position: absolute;
         top: 0;
         right: 0;
         flex-direction: column;

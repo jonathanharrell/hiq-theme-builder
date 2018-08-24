@@ -45,7 +45,7 @@
 <style scoped>
     .editor-category {
         flex: 0 0 18rem;
-        position: fixed;
+        position: absolute;
         width: var(--editor-category-width);
         height: calc(100vh - var(--navbar-height));
         margin-left: var(--editor-nav-width);
