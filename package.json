@@ -1,6 +1,6 @@
 {
     "name": "hiq-theme-builder",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "Theme builder for HiQ CSS framework.",
     "author": "Jonathan Harrell <harr041@gmail.com>",
     "private": true,
@@ -14,7 +14,7 @@
         "animate.css": "^3.6.1",
         "axios": "^0.18.0",
         "firebase": "^5.0.4",
-        "hiq": "^2.3.1-beta",
+        "hiq": "^3.0.1",
         "lodash": "^4.17.10",
         "raven-js": "^3.26.4",
         "tinycolor2": "^1.4.1",

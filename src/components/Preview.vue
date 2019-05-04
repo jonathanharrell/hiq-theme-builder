@@ -102,28 +102,28 @@
     /deep/ h2 {
         font-size: var(--hiq-font-size-4);
         font-weight: var(--hiq-font-weight-normal);
-        color: var(--hiq-gray);
+        color: var(--hiq-color-gray-4);
     }
 
     .theme-dark /deep/ h2 {
-        color: var(--hiq-gray-light);
+        color: var(--hiq-color-gray-5);
     }
 
     /deep/ .variable-label {
         margin: 0.5rem 0 0;
         font-weight: var(--hiq-font-weight-medium);
-        color: var(--hiq-gray);
+        color: var(--hiq-color-gray-4);
     }
 
     .theme-dark /deep/ .variable-label {
-        color: var(--hiq-gray-light);
+        color: var(--hiq-color-gray-5);
     }
 
     /deep/ .color-swatch {
-        border: 1px solid var(--hiq-gray-lighter);
+        border: 1px solid var(--hiq-color-gray-6);
     }
 
     .theme-dark /deep/ .color-swatch {
-        border-color: var(--hiq-gray-darker);
+        border-color: var(--hiq-color-gray-2);
     }
 </style>

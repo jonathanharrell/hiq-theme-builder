@@ -92,9 +92,9 @@
                             name: doc.data().name,
                             colors: {
                                 'color-primary': doc.data().variables['--hiq-color-primary'].value,
-                                'gray-darker': doc.data().variables['--hiq-gray-darker'].value,
-                                'gray': doc.data().variables['--hiq-gray'].value,
-                                'gray-lighter': doc.data().variables['--hiq-gray-lighter'].value
+                                'color-gray-2': doc.data().variables['--hiq-color-gray-2'] ? doc.data().variables['--hiq-color-gray-2'].value : doc.data().variables['--hiq-gray-darker'].value,
+                                'color-gray-4': doc.data().variables['--hiq-color-gray-4'] ? doc.data().variables['--hiq-color-gray-4'].value : doc.data().variables['--hiq-gray'].value,
+                                'color-gray-6': doc.data().variables['--hiq-color-gray-6'] ? doc.data().variables['--hiq-color-gray-6'].value : doc.data().variables['--hiq-gray-lighter'].value
                             },
                             dateCreated: doc.data().dateCreated
                         })
@@ -170,14 +170,15 @@
 
     .create-theme {
         height: var(--theme-thumbnail-height);
-        border: 2px dotted var(--hiq-gray-light);
+        border: 2px dotted var(--hiq-color-gray-5);
         background-color: transparent;
-        color: var(--hiq-gray-light);
+        color: var(--hiq-color-gray-5);
+
         &:hover,
         &:focus,
         &:active {
-            border-color: var(--hiq-gray);
-            color: var(--hiq-gray);
+            border-color: var(--hiq-color-gray-4);
+            color: var(--hiq-color-gray-4);
         }
     }
 </style>

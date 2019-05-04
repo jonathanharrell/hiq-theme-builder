@@ -4,32 +4,36 @@
         <h2>Gray Color Palette</h2>
         <section class="color-thumbnails">
             <div class="color-thumbnail">
-                <div class="color-swatch" style="background-color: var(--hiq-gray-darkest)"></div>
-                <p class="variable-label">Darkest Gray</p>
+                <div class="color-swatch" style="background-color: var(--hiq-color-gray-1)"></div>
+                <p class="variable-label">Gray 1</p>
             </div>
             <div class="color-thumbnail">
-                <div class="color-swatch" style="background-color: var(--hiq-gray-darker)"></div>
-                <p class="variable-label">Darker Gray</p>
+                <div class="color-swatch" style="background-color: var(--hiq-color-gray-2)"></div>
+                <p class="variable-label">Gray 2</p>
             </div>
             <div class="color-thumbnail">
-                <div class="color-swatch" style="background-color: var(--hiq-gray-dark)"></div>
-                <p class="variable-label">Dark Gray</p>
+                <div class="color-swatch" style="background-color: var(--hiq-color-gray-3)"></div>
+                <p class="variable-label">Gray 3</p>
             </div>
             <div class="color-thumbnail">
-                <div class="color-swatch" style="background-color: var(--hiq-gray)"></div>
-                <p class="variable-label">Gray</p>
+                <div class="color-swatch" style="background-color: var(--hiq-color-gray-4)"></div>
+                <p class="variable-label">Gray 4</p>
             </div>
             <div class="color-thumbnail">
-                <div class="color-swatch" style="background-color: var(--hiq-gray-light)"></div>
-                <p class="variable-label">Light Gray</p>
+                <div class="color-swatch" style="background-color: var(--hiq-color-gray-5)"></div>
+                <p class="variable-label">Gray 5</p>
             </div>
             <div class="color-thumbnail">
-                <div class="color-swatch" style="background-color: var(--hiq-gray-lighter)"></div>
-                <p class="variable-label">Lighter Gray</p>
+                <div class="color-swatch" style="background-color: var(--hiq-color-gray-6)"></div>
+                <p class="variable-label">Gray 6</p>
             </div>
             <div class="color-thumbnail">
-                <div class="color-swatch" style="background-color: var(--hiq-gray-lightest)"></div>
-                <p class="variable-label">Lightest Gray</p>
+                <div class="color-swatch" style="background-color: var(--hiq-color-gray-7)"></div>
+                <p class="variable-label">Gray 7</p>
+            </div>
+            <div class="color-thumbnail">
+                <div class="color-swatch" style="background-color: var(--hiq-color-gray-8)"></div>
+                <p class="variable-label">Gray 8</p>
             </div>
         </section>
         <h2>Semantic Color Palette</h2>

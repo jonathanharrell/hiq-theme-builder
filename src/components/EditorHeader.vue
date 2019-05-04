@@ -18,7 +18,7 @@
             <div class="theme-name" v-else>
                 <span class="theme-name-text">{{ themeName }}</span>
                 <button class="edit-theme-name" @click="editMode = true">
-                    <icon-base iconName="Edit" iconColor="var(--hiq-gray-light)">
+                    <icon-base iconName="Edit" iconColor="var(--hiq-color-gray-5)">
                         <icon-pencil></icon-pencil>
                     </icon-base>
                 </button>
@@ -129,11 +129,12 @@
         height: auto;
         border-color: transparent;
         background-color: transparent;
+
         &:hover,
         &:focus,
         &:active {
             & /deep/ g {
-                fill: var(--hiq-gray);
+                fill: var(--hiq-color-gray-4);
             }
         }
     }
@@ -141,6 +142,7 @@
     form {
         display: flex;
         align-items: center;
+
         & button {
             height: 2.5rem;
             margin-left: 0.5rem;

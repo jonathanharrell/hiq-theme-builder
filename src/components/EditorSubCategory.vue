@@ -8,7 +8,7 @@
             >
                 <icon-base
                     icon-name="caret"
-                    icon-color="var(--hiq-gray-light)"
+                    icon-color="var(--hiq-color-gray-5)"
                     :width="10"
                 >
                     <icon-caret></icon-caret>
@@ -92,7 +92,7 @@
         computed: {
             filteredVariables () {
                 return Object.entries(this.$store.state.variables)
-                    .filter(entry => entry[1].category === this.id)
+                    .filter(entry => entry[1] && entry[1].category === this.id)
                     .reduce((obj, item) => {
                         const [ variable, config ] = item
                         obj[variable] = config
@@ -124,6 +124,7 @@
     .sub-category-title {
         margin: 0;
         font-size: var(--hiq-font-size-base);
+
         & button {
             display: flex;
             align-items: center;
@@ -137,11 +138,13 @@
             border-top-color: var(--editor-panel-border-color);
             background-color: transparent;
             color: var(--hiq-text-color);
+
             &[aria-expanded=true] {
                 & svg {
                     transform: rotate(90deg);
                 }
             }
+
             & svg {
                 margin-right: 0.25rem;
                 transition: transform var(--hiq-speed) var(--hiq-easing);
@@ -160,6 +163,7 @@
             justify-content: space-between;
             font-weight: var(--hiq-font-weight-medium);
             color: var(--label-color);
+
             & .variable-name {
                 flex: 1;
                 overflow: hidden;
@@ -168,6 +172,7 @@
                 text-overflow: ellipsis;
             }
         }
+
         &:not(:last-child) {
             margin-bottom: 0.75rem;
         }

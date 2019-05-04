@@ -123,6 +123,7 @@
         width: 100%;
         padding: 25% 0;
         cursor: pointer;
+
         &.disabled {
             opacity: 0.5;
             pointer-events: none;

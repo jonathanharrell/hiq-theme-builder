@@ -81,6 +81,7 @@
                     .replace(/:/g, '":')
                     .replace(/ {8}/g, '        "')
                     .replace(/,\n {4}}/g, '\n    }')
+                    .replace(';', '')
 
                 return JSON
                     .parse(config)
@@ -93,7 +94,7 @@
             },
 
             async getDefaultValueData () {
-                const { data } = await axios.get('https://raw.githubusercontent.com/jonathanharrell/hiq/master/pcss/variables.pcss')
+                const { data } = await axios.get('https://raw.githubusercontent.com/jonathanharrell/hiq/master/css/variables.css')
                 return this.extractDefaultValues(data)
             },
 
@@ -154,6 +155,6 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        background-color: var(--hiq-gray-lightest);
+        background-color: var(--hiq-color-gray-7);
     }
 </style>

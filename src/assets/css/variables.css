@@ -1,12 +1,13 @@
 :root {
     /* gray palette */
-    --hiq-gray-darkest: hsl(220, 10%, 5%);
-    --hiq-gray-darker: hsl(220, 10%, 10%);
-    --hiq-gray-dark: hsl(220, 10%, 20%);
-    --hiq-gray: hsl(220, 10%, 40%);
-    --hiq-gray-light: hsl(220, 10%, 60%);
-    --hiq-gray-lighter: hsl(220, 10%, 90%);
-    --hiq-gray-lightest: hsl(220, 10%, 95%);
+    --hiq-color-gray-1: hsl(220, 10%, 5%);
+    --hiq-color-gray-2: hsl(220, 10%, 10%);
+    --hiq-color-gray-3: hsl(220, 10%, 20%);
+    --hiq-color-gray-4: hsl(220, 10%, 40%);
+    --hiq-color-gray-5: hsl(220, 10%, 60%);
+    --hiq-color-gray-6: hsl(220, 10%, 90%);
+    --hiq-color-gray-7: hsl(220, 10%, 95%);
+    --hiq-color-gray-8: hsl(220, 10%, 98%);
 
     /* semantic palette */
     --hiq-color-primary: hsl(210, 100%, 50%);
@@ -39,30 +40,30 @@
 
     --hiq-border-radius: 4px;
 
-    --hiq-text-color: var(--hiq-gray-darker);
-    --hiq-input-border-color: var(--hiq-gray-lighter);
+    --hiq-text-color: var(--hiq-color-gray-2);
+    --hiq-input-border-color: var(--hiq-color-gray-6);
     --hiq-input-background-color: white;
 
     --hiq-speed: 0.1s;
     --hiq-easing: ease-out;
 
-    --secondary-button-background-color: var(--hiq-gray-lighter);
-    --secondary-button-border-color: var(--hiq-gray-lighter);
-    --secondary-button-text-color: var(--hiq-gray);
-    --secondary-button-hover-text-color: var(--hiq-gray-dark);
+    --secondary-button-background-color: var(--hiq-color-gray-6);
+    --secondary-button-border-color: var(--hiq-color-gray-6);
+    --secondary-button-text-color: var(--hiq-color-gray-4);
+    --secondary-button-hover-text-color: var(--hiq-color-gray-3);
     --navbar-background-color: white;
     --editor-nav-width: 4rem;
     --editor-nav-background-color: white;
-    --editor-nav-border-color: var(--hiq-gray-lighter);
+    --editor-nav-border-color: hsl(220, 10%, 90%);
     --editor-category-width: 22rem;
-    --tooltip-background-color: var(--hiq-gray-dark);
+    --tooltip-background-color: hsl(220, 10%, 20%);
     --editor-panel-background-color: hsl(220, 10%, 98%);
-    --editor-panel-border-color: var(--hiq-gray-lighter);
-    --label-color: var(--hiq-gray);
-    --info-icon-color: var(--hiq-gray-lighter);
+    --editor-panel-border-color: hsl(220, 10%, 90%);
+    --label-color: var(--hiq-color-gray-4);
+    --info-icon-color: hsl(220, 10%, 90%);
     --controls-background-color: white;
-    --pill-background-color: var(--hiq-gray-lightest);
-    --editor-preview-background-color: var(--hiq-gray-lightest);
+    --pill-background-color: var(--hiq-color-gray-7);
+    --editor-preview-background-color: var(--hiq-color-gray-7);
     --editor-settings-width: 15rem;
     --theme-thumbnail-height: 7.25rem;
     --navbar-height: 4rem;

@@ -113,9 +113,11 @@
         border-radius: 0;
         background-color: transparent;
         color: var(--hiq-text-color);
+
         &.router-link-active {
             color: var(--hiq-color-primary);
         }
+
         & img {
             width: 1.25rem;
             height: 1.25rem;

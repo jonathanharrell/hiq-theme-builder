@@ -85,7 +85,7 @@
 
         data () {
             return {
-                units: ['px', 'em', 'rem']
+                units: ['px', 'em', 'rem', '%']
             }
         },
 
@@ -115,6 +115,7 @@
                 if (this.value.includes('px')) return 'px'
                 if (this.value.includes('rem')) return 'rem'
                 if (this.value.includes('em')) return 'em'
+                if (this.value.includes('%')) return '%'
                 return null
             },
 
@@ -218,6 +219,7 @@
         border: 1px solid var(--hiq-input-border-color);
         border-radius: var(--hiq-border-radius);
         background-color: var(--hiq-input-background-color);
+
         &:focus-within {
             border-color: var(--hiq-input-focus-border-color);
             box-shadow: 0 0 0 var(--hiq-outline-width, 0.2rem) var(--hiq-outline-color, hsl(210, 100%, 85%));
@@ -231,6 +233,7 @@
         border-color: transparent;
         border-radius: 0;
         background-color: transparent;
+
         &:hover,
         &:focus,
         &:active {
@@ -246,7 +249,7 @@
         border-radius: var(--hiq-border-radius);
         background-color: var(--pill-background-color);
         font-size: var(--hiq-font-size-small);
-        color: var(--hiq-gray-light);
+        color: var(--hiq-color-gray-5);
     }
 
     .resolved-value {
@@ -255,6 +258,7 @@
 
     .active-unit {
         margin-right: 0.5rem;
+
         & del {
             background-color: transparent;
         }

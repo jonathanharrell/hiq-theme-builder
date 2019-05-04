@@ -86,6 +86,7 @@
 
     .logo {
         display: inline-block;
+
         & img {
             width: 3rem;
         }
@@ -100,9 +101,11 @@
     button {
         width: 14rem;
         justify-content: flex-start;
+
         &:not(:last-child) {
             margin-bottom: 0.5rem;
         }
+
         & svg {
             width: 1.125rem;
             margin-right: 0.5rem;

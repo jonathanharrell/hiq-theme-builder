@@ -10,5 +10,5 @@
     height: 100vh;
     background-color: var(--editor-preview-background-color);
     font-size: var(--hiq-font-size-large);
-    color: var(--hiq-gray-light);
+    color: var(--hiq-color-gray-5);
 }

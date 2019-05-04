@@ -82,6 +82,6 @@
         font-size: var(--hiq-font-size-small);
         font-weight: var(--hiq-font-weight-normal);
         text-align: center;
-        color: var(--hiq-gray);
+        color: var(--hiq-color-gray-4);
     }
 </style>

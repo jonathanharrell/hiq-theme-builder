@@ -77,6 +77,7 @@
         color: var(--hiq-text-color);
         transition: transform var(--hiq-speed) var(--hiq-easing);
         cursor: pointer;
+
         &:hover {
             box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
             transform: scale(1.025);
@@ -99,11 +100,11 @@
         padding: 0;
         border: 0;
         background-color: transparent;
-        color: var(--hiq-gray-lighter);
+        color: var(--hiq-color-gray-6);
         &:hover,
         &:focus,
         &:active {
-            color: var(--hiq-gray-light);
+            color: var(--hiq-color-gray-5);
         }
     }
 

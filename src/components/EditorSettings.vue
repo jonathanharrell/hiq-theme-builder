@@ -7,14 +7,14 @@
                     @click="setEditorTheme('light')"
                     :class="{ active: editorTheme === 'light' }"
                 >
-                    <color-swatch color="var(--hiq-gray-lightest)"></color-swatch>
+                    <color-swatch color="var(--hiq-color-gray-7)"></color-swatch>
                     <span>Light</span>
                 </button>
                 <button
                     @click="setEditorTheme('dark')"
                     :class="{ active: editorTheme === 'dark' }"
                 >
-                    <color-swatch color="var(--hiq-gray-dark)"></color-swatch>
+                    <color-swatch color="var(--hiq-color-gray-3)"></color-swatch>
                     <span>Dark</span>
                 </button>
             </button-group>
@@ -32,17 +32,6 @@
         </section>
         <section class="settings-section export-theme">
             <h3 class="settings-section-title">Export Theme</h3>
-            <h4 class="settings-subsection-title">File Format</h4>
-            <button-group class="file-formats">
-                <button
-                    v-for="format in fileFormats"
-                    :key="format"
-                    :class="{ active: activeFileFormat === format }"
-                    @click="setFileFormat(format)"
-                >
-                    {{ format }}
-                </button>
-            </button-group>
             <button class="is-full-width" @click="exportVariables">Download</button>
         </section>
     </div>
@@ -66,7 +55,6 @@
 
         data () {
             return {
-                fileFormats: ['css', 'pcss'],
                 activeFileFormat: 'css',
                 saving: false
             }
