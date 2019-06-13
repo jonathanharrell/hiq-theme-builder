@@ -35,6 +35,10 @@ const routes = [
                 component: Preview
             }
         ]
+    },
+    {
+        path: '/theme-builder',
+        redirect: '/'
     }
 ]
 
