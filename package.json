@@ -12,10 +12,10 @@
     },
     "dependencies": {
         "animate.css": "^3.6.1",
-        "axios": "^0.18.0",
+        "axios": "^0.18.1",
         "firebase": "^5.0.4",
         "hiq": "^3.0.1",
-        "lodash": "^4.17.10",
+        "lodash": "^4.17.15",
         "raven-js": "^3.26.4",
         "tinycolor2": "^1.4.1",
         "vue": "^2.5.2",
@@ -70,7 +70,7 @@
         "vue-template-compiler": "^2.5.2",
         "webpack": "^3.6.0",
         "webpack-bundle-analyzer": "^2.9.0",
-        "webpack-dev-server": "^2.9.1",
+        "webpack-dev-server": "^2.11.5",
         "webpack-merge": "^4.1.0"
     },
     "engines": {
