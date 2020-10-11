@@ -57,7 +57,7 @@
                 }, 1000)
 
                 try {
-                    const { data } = await axios.get('https://raw.githubusercontent.com/jonathanharrell/hiq/master/docs/.vuepress/theme/data/custom-properties.js')
+                    const { data } = await axios.get('https://raw.githubusercontent.com/jonathanharrell/hiq/master/docs/.vuepress/theme/data/custom-properties.json')
                     const variableConfig = this.extractConfig(data)
                     const defaultValues = await this.getDefaultValueData()
 
@@ -76,15 +76,7 @@
             },
 
             extractConfig (data) {
-                const config = data
-                    .replace('module.exports = ', '')
-                    .replace(/:/g, '":')
-                    .replace(/ {8}/g, '        "')
-                    .replace(/,\n {4}}/g, '\n    }')
-                    .replace(';', '')
-
-                return JSON
-                    .parse(config)
+                return data
                     .reduce((obj, item) => {
                         const variable = item.name
                         delete item.name
