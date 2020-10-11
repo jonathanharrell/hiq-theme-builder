@@ -57,7 +57,7 @@
                 }, 1000)
 
                 try {
-                    const { data } = await axios.get('https://raw.githubusercontent.com/jonathanharrell/hiq/master/docs/.vuepress/data/custom-properties.js')
+                    const { data } = await axios.get('https://raw.githubusercontent.com/jonathanharrell/hiq/master/docs/.vuepress/theme/data/custom-properties.js')
                     const variableConfig = this.extractConfig(data)
                     const defaultValues = await this.getDefaultValueData()
 
